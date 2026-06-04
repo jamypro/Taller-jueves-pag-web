@@ -26,6 +26,7 @@ Una página web institucional que sirve como vitrina digital de la I.E. Santa Ma
 
 ### Secciones principales
 
+
 1. **Inicio** - Banner de bienvenida con clima en Mocoa
 2. **Nosotros** - Misión, visión y valores institucionales
 3. **Oferta Educativa** - Niveles de enseñanza disponibles
