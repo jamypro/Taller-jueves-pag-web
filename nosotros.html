@@ -1,24 +1,10 @@
 <!doctype html>
 <html lang="es">
-  <!--
-  nosotros.html — Página "Nosotros"
-  Institución Educativa Santa María Goretti
-
-  CONTENIDO DE ESTA PÁGINA:
-  1. Hero de sección (banner interior)
-  2. Historia de la institución (línea de tiempo)
-  3. Misión
-  4. Visión
-  5. Valores institucionales
-  6. Himno / Símbolo institucional
-  7. Equipo docente (tarjetas)
--->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- SEO -->
     <title>Nosotros | I.E. Santa María Goretti — Mocoa, Putumayo</title>
     <meta
       name="description"
@@ -30,7 +16,6 @@
     />
     <meta name="author" content="I.E. Santa María Goretti" />
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -38,31 +23,26 @@
       rel="stylesheet"
     />
 
-    <!-- Bootstrap 5 CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <!-- Bootstrap Icons -->
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
 
-    <!-- Estilos propios -->
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/animations.css" />
 
-    <!-- Estilos específicos de esta página -->
     <style>
-      /* ── Línea de tiempo (Timeline) ── */
       .timeline {
         position: relative;
         padding: 0;
         list-style: none;
       }
 
-      /* Línea vertical central */
       .timeline::before {
         content: "";
         position: absolute;
@@ -79,27 +59,23 @@
         border-radius: 3px;
       }
 
-      /* Cada elemento de la línea de tiempo */
       .timeline-item {
         position: relative;
         margin-bottom: 3rem;
         width: 45%;
       }
 
-      /* Items impares: lado izquierdo */
       .timeline-item:nth-child(odd) {
         left: 0;
         text-align: right;
         padding-right: 2rem;
       }
 
-      /* Items pares: lado derecho */
       .timeline-item:nth-child(even) {
         left: 55%;
         padding-left: 2rem;
       }
 
-      /* Punto circular en la línea */
       .timeline-punto {
         position: absolute;
         top: 12px;
@@ -137,7 +113,6 @@
         color: var(--oscuro-texto);
       }
 
-      /* En móviles: la línea va a la izquierda */
       @media (max-width: 768px) {
         .timeline::before {
           left: 16px;
@@ -157,7 +132,6 @@
         }
       }
 
-      /* ── Tarjetas de valores ── */
       .valor-card {
         border-left: 4px solid var(--color-secundario);
         transition: var(--transicion);
@@ -168,7 +142,6 @@
         transform: translateX(6px);
       }
 
-      /* ── Sección del himno ── */
       .himno-contenedor {
         background: linear-gradient(135deg, var(--color-primario), #1f618d);
         color: white;
@@ -188,7 +161,6 @@
         font-family: serif;
       }
 
-      /* ── Hero interior ── */
       .hero-interior {
         background: linear-gradient(
           135deg,
@@ -216,7 +188,6 @@
         background-color: var(--oscuro-fondo);
       }
 
-      /* ── Estadísticas numéricas ── */
       .stat-numero {
         font-family: var(--fuente-titulo);
         font-size: 2.8rem;
@@ -235,10 +206,6 @@
   </head>
 
   <body>
-    <!-- ============================================================
-       NAVBAR (idéntico en todas las páginas)
-       El JS marca automáticamente el link "Nosotros" como activo.
-       ============================================================ -->
     <header>
       <nav
         class="navbar navbar-expand-lg"
@@ -309,10 +276,6 @@
     </header>
 
     <main>
-      <!-- ============================================================
-         HERO INTERIOR — Banner de la página "Nosotros"
-         Más pequeño que el hero del inicio, pero igual de atractivo.
-         ============================================================ -->
       <section
         class="hero-interior"
         aria-label="Encabezado de la página Nosotros"
@@ -353,7 +316,6 @@
             comunidad y con los valores que nos legó Santa María Goretti.
           </p>
 
-          <!-- Estadísticas rápidas -->
           <div
             class="row justify-content-center g-4 mt-3 hero-botones-animados"
           >
@@ -379,9 +341,6 @@
         </div>
       </section>
 
-      <!-- ============================================================
-         SECCIÓN: HISTORIA (línea de tiempo)
-         ============================================================ -->
       <section id="historia" aria-label="Historia de la institución">
         <div class="container">
           <div class="bloque-centrado mb-5 animacion-entrada slide-up">
@@ -393,9 +352,7 @@
             </p>
           </div>
 
-          <!-- Línea de tiempo -->
           <ul class="timeline" aria-label="Línea de tiempo histórica">
-            <!-- Hito 1 -->
             <li
               class="timeline-item animacion-entrada slide-in-izquierda retraso-1"
             >
@@ -411,7 +368,6 @@
               </article>
             </li>
 
-            <!-- Hito 2 -->
             <li
               class="timeline-item animacion-entrada slide-in-derecha retraso-2"
             >
@@ -427,7 +383,6 @@
               </article>
             </li>
 
-            <!-- Hito 3 -->
             <li
               class="timeline-item animacion-entrada slide-in-izquierda retraso-3"
             >
@@ -445,7 +400,6 @@
               </article>
             </li>
 
-            <!-- Hito 4 -->
             <li
               class="timeline-item animacion-entrada slide-in-derecha retraso-4"
             >
@@ -461,7 +415,6 @@
               </article>
             </li>
 
-            <!-- Hito 5 -->
             <li
               class="timeline-item animacion-entrada slide-in-izquierda retraso-5"
             >
@@ -477,7 +430,6 @@
               </article>
             </li>
 
-            <!-- Hito 6 -->
             <li
               class="timeline-item animacion-entrada slide-in-derecha retraso-6"
             >
@@ -493,13 +445,9 @@
               </article>
             </li>
           </ul>
-          <!-- fin .timeline -->
         </div>
       </section>
 
-      <!-- ============================================================
-         SECCIÓN: MISIÓN
-         ============================================================ -->
       <section
         class="seccion-alternada"
         id="mision"
@@ -507,7 +455,6 @@
       >
         <div class="container">
           <div class="row align-items-center g-5">
-            <!-- Ícono decorativo grande -->
             <div class="col-lg-4 text-center animacion-entrada scale-in">
               <div
                 class="mx-auto mb-3"
@@ -534,7 +481,6 @@
               <span class="badge-nivel">Misión</span>
             </div>
 
-            <!-- Texto de la misión -->
             <div class="col-lg-8 animacion-entrada slide-in-derecha retraso-2">
               <h2 class="titulo-seccion text-start mb-3">Nuestra Misión</h2>
               <div class="linea-dorada mb-4"></div>
@@ -555,7 +501,6 @@
                 con el territorio del Putumayo amazónico.
               </p>
 
-              <!-- Pilares de la misión -->
               <div class="row g-3 mt-2">
                 <div class="col-sm-4">
                   <div class="d-flex align-items-center gap-2">
@@ -596,9 +541,6 @@
         </div>
       </section>
 
-      <!-- ============================================================
-         SECCIÓN: VISIÓN
-         ============================================================ -->
       <section id="vision" aria-label="Visión institucional">
         <div class="container">
           <div class="row align-items-center g-5">
@@ -620,7 +562,6 @@
                 sostenible en sus territorios.
               </p>
 
-              <!-- Metas al 2030 -->
               <div class="row g-3 mt-2">
                 <div class="col-md-6">
                   <div
@@ -697,7 +638,6 @@
               </div>
             </div>
 
-            <!-- Ícono decorativo -->
             <div
               class="col-lg-4 text-center animacion-entrada scale-in retraso-3"
             >
@@ -725,9 +665,6 @@
         </div>
       </section>
 
-      <!-- ============================================================
-         SECCIÓN: VALORES INSTITUCIONALES
-         ============================================================ -->
       <section
         class="seccion-alternada"
         id="valores"
@@ -744,7 +681,6 @@
           </div>
 
           <div class="row g-4">
-            <!-- Valor 1: Fe -->
             <div class="col-lg-4 col-md-6 animacion-entrada slide-up retraso-1">
               <article class="card valor-card h-100">
                 <div class="card-body p-4">
@@ -769,7 +705,6 @@
               </article>
             </div>
 
-            <!-- Valor 2: Respeto -->
             <div class="col-lg-4 col-md-6 animacion-entrada slide-up retraso-2">
               <article class="card valor-card h-100">
                 <div class="card-body p-4">
@@ -794,7 +729,6 @@
               </article>
             </div>
 
-            <!-- Valor 3: Honestidad -->
             <div class="col-lg-4 col-md-6 animacion-entrada slide-up retraso-3">
               <article class="card valor-card h-100">
                 <div class="card-body p-4">
@@ -819,7 +753,6 @@
               </article>
             </div>
 
-            <!-- Valor 4: Solidaridad -->
             <div class="col-lg-4 col-md-6 animacion-entrada slide-up retraso-4">
               <article class="card valor-card h-100">
                 <div class="card-body p-4">
@@ -844,7 +777,6 @@
               </article>
             </div>
 
-            <!-- Valor 5: Excelencia -->
             <div class="col-lg-4 col-md-6 animacion-entrada slide-up retraso-5">
               <article class="card valor-card h-100">
                 <div class="card-body p-4">
@@ -869,7 +801,6 @@
               </article>
             </div>
 
-            <!-- Valor 6: Identidad -->
             <div class="col-lg-4 col-md-6 animacion-entrada slide-up retraso-6">
               <article class="card valor-card h-100">
                 <div class="card-body p-4">
@@ -894,13 +825,9 @@
               </article>
             </div>
           </div>
-          <!-- fin row valores -->
         </div>
       </section>
 
-      <!-- ============================================================
-         SECCIÓN: SÍMBOLO Y PATRONA
-         ============================================================ -->
       <section id="patrona" aria-label="Nuestra patrona Santa María Goretti">
         <div class="container">
           <div class="row align-items-center g-5 justify-content-center">
@@ -996,9 +923,6 @@
         </div>
       </section>
 
-      <!-- ============================================================
-         SECCIÓN: EQUIPO DOCENTE
-         ============================================================ -->
       <section
         class="seccion-alternada"
         id="equipo"
@@ -1015,10 +939,8 @@
           </div>
 
           <div class="row g-4">
-            <!-- Docente 1: Rector -->
             <div class="col-lg-3 col-sm-6 animacion-entrada scale-in retraso-1">
               <article class="card tarjeta-docente hover-elevar h-100">
-                <!-- Avatar con iniciales (placeholder elegante) -->
                 <div
                   class="avatar-docente d-flex align-items-center justify-content-center"
                   style="
@@ -1060,7 +982,6 @@
               </article>
             </div>
 
-            <!-- Docente 2: Coordinadora Académica -->
             <div class="col-lg-3 col-sm-6 animacion-entrada scale-in retraso-2">
               <article class="card tarjeta-docente hover-elevar h-100">
                 <div
@@ -1100,7 +1021,6 @@
               </article>
             </div>
 
-            <!-- Docente 3: Coordinador de Convivencia -->
             <div class="col-lg-3 col-sm-6 animacion-entrada scale-in retraso-3">
               <article class="card tarjeta-docente hover-elevar h-100">
                 <div
@@ -1140,7 +1060,6 @@
               </article>
             </div>
 
-            <!-- Docente 4: Docente de Ciencias -->
             <div class="col-lg-3 col-sm-6 animacion-entrada scale-in retraso-4">
               <article class="card tarjeta-docente hover-elevar h-100">
                 <div
@@ -1180,7 +1099,6 @@
               </article>
             </div>
 
-            <!-- Docente 5 -->
             <div class="col-lg-3 col-sm-6 animacion-entrada scale-in retraso-5">
               <article class="card tarjeta-docente hover-elevar h-100">
                 <div
@@ -1220,7 +1138,6 @@
               </article>
             </div>
 
-            <!-- Docente 6 -->
             <div class="col-lg-3 col-sm-6 animacion-entrada scale-in retraso-6">
               <article class="card tarjeta-docente hover-elevar h-100">
                 <div
@@ -1260,7 +1177,6 @@
               </article>
             </div>
 
-            <!-- Docente 7 -->
             <div class="col-lg-3 col-sm-6 animacion-entrada scale-in retraso-7">
               <article class="card tarjeta-docente hover-elevar h-100">
                 <div
@@ -1300,7 +1216,6 @@
               </article>
             </div>
 
-            <!-- Docente 8 -->
             <div class="col-lg-3 col-sm-6 animacion-entrada scale-in retraso-8">
               <article class="card tarjeta-docente hover-elevar h-100">
                 <div
@@ -1340,9 +1255,7 @@
               </article>
             </div>
           </div>
-          <!-- fin row equipo -->
 
-          <!-- Nota sobre el equipo completo -->
           <p class="text-center text-muted mt-4 animacion-entrada fade-in">
             <i class="bi bi-info-circle me-1"></i>
             Contamos con un equipo de más de <strong>50 docentes</strong> en
@@ -1358,9 +1271,6 @@
       </section>
     </main>
 
-    <!-- ============================================================
-       FOOTER (idéntico en todas las páginas)
-       ============================================================ -->
     <footer role="contentinfo">
       <div class="container">
         <div class="row g-4">
@@ -1495,7 +1405,6 @@
       </div>
     </footer>
 
-    <!-- Botón volver arriba -->
     <button
       id="botonArriba"
       aria-label="Volver al inicio de la página"
@@ -1504,7 +1413,6 @@
       <i class="bi bi-arrow-up-short fs-4"></i>
     </button>
 
-    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/tema.js"></script>
     <script src="js/main.js"></script>
