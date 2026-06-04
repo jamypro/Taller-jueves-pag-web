@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Galería | I.E. Santa María Goretti</title>
+  <meta name="description" content="Galería fotográfica de la Institución Educativa Santa María Goretti. Conoce nuestras instalaciones, eventos y comunidad educativa.">
+  <meta name="author" content="I.E. Santa María Goretti">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <style>
+    
+    .hero-interior {
+      background: linear-gradient(135deg, var(--color-primario) 0%, #1f618d 100%);
+      color: white;
+      padding: 5rem 0 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-interior::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background-color: var(--color-blanco);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+
+    body.modo-oscuro .hero-interior::after {
+      background-color: var(--oscuro-fondo);
+    }
+
+    
+    .filtro-btn {
+      background: transparent;
+      border: 2px solid var(--color-borde);
+      color: var(--color-texto);
+      padding: 0.5rem 1.5rem;
+      border-radius: var(--radio-full);
+      font-weight: 600;
+      font-size: var(--tamaño-sm);
+      transition: var(--transicion);
+    }
+
+    body.modo-oscuro .filtro-btn {
+      color: var(--oscuro-texto);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .filtro-btn:hover, .filtro-btn.activo {
+      background-color: var(--color-primario);
+      border-color: var(--color-primario);
+      color: var(--color-blanco);
+    }
+
+    
+    .modal-backdrop.show {
+      opacity: 0.85;
+    }
+
+   
+    .btn-cerrar-modal {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      opacity: 0.8;
+      transition: var(--transicion);
+      z-index: 1060;
+    }
+
+    .btn-cerrar-modal:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    
+    .btn-nav-modal {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      border: none;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: var(--transicion);
+      z-index: 1060;
+    }
+
+    .btn-nav-modal:hover {
+      background: var(--color-primario);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .btn-nav-prev { left: -60px; }
+    .btn-nav-next { right: -60px; }
+
+    /* Ajustes para móviles en el modal */
+    @media (max-width: 768px) {
+      .btn-nav-prev { left: 10px; background: rgba(0,0,0,0.7); }
+      .btn-nav-next { right: 10px; background: rgba(0,0,0,0.7); }
+      .btn-cerrar-modal { top: 10px; right: 10px; background: rgba(0,0,0,0.7); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+    }
+
+    /* Ocultar elementos de la galería que no coinciden con el filtro */
+    .galeria-item.oculto {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+ 
+  <header>
+    <nav class="navbar navbar-expand-lg" id="barraNavegacion" aria-label="Navegación principal">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <i class="bi bi-mortarboard-fill me-2" style="color: var(--color-secundario);"></i>
+          I.E. <span>Santa María Goretti</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacion" aria-controls="menuNavegacion" aria-expanded="false" aria-label="Abrir menú de navegación">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuNavegacion">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+            <li class="nav-item"><a class="nav-link" href="oferta.html">Oferta Educativa</a></li>
+            <li class="nav-item"><a class="nav-link" href="galeria.html">Galería</a></li>
+            <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+            <li class="nav-item d-none d-lg-block">
+              <span style="border-left:1px solid rgba(255,255,255,0.2);height:24px;display:block;margin:8px 4px;"></span>
+            </li>
+            <li class="nav-item">
+              <button id="botonTema" aria-label="Cambiar modo de color" title="Alternar modo oscuro">
+                <i class="bi bi-moon-stars-fill" id="iconoTema"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+   
+    <section class="hero-interior" aria-label="Encabezado de la página Galería">
+      <div class="container text-center">
+        <nav aria-label="Ruta de navegación" class="mb-3">
+          <ol class="breadcrumb justify-content-center" style="background:transparent;">
+            <li class="breadcrumb-item"><a href="index.html" style="color:rgba(255,255,255,0.7);">Inicio</a></li>
+            <li class="breadcrumb-item active" style="color:var(--color-secundario);">Galería</li>
+          </ol>
+        </nav>
+        <h1 class="hero-titulo-animado" style="font-size: clamp(2rem, 4vw, 3rem);">
+          Galería Fotográfica
+        </h1>
+        <div class="linea-dorada centrada linea-dorada-animada my-3"></div>
+        <p class="hero-subtitulo-animado lead mx-auto" style="max-width:700px; opacity:0.9;">
+          Un recorrido visual por nuestras instalaciones, eventos culturales y
+          la vida cotidiana de la comunidad educativa gorettiana.
+        </p>
+      </div>
+    </section>
+
+   
+    <section id="galeria" class="py-grande">
+      <div class="container">
+
+        
+        <div class="d-flex flex-wrap justify-content-center gap-2 mb-5 animacion-entrada slide-up">
+          <button class="filtro-btn activo" data-filtro="todas">Todas</button>
+          <button class="filtro-btn" data-filtro="instalaciones">Instalaciones</button>
+          <button class="filtro-btn" data-filtro="eventos">Eventos</button>
+          <button class="filtro-btn" data-filtro="deportes">Deportes</button>
+        </div>
+
+      
+        <div class="galeria-grid" id="contenedorGaleria">
+
+         
+          <div class="galeria-item animacion-entrada scale-in retraso-1" data-categoria="instalaciones" data-indice="0">
+            <img src="img/fachada.jpg" alt="Fachada principal de la institución" loading="lazy">
+            <div class="overlay">
+              <span class="overlay-texto">Fachada Principal</span>
+            </div>
+          </div>
+
+         
+          <div class="galeria-item animacion-entrada scale-in retraso-2" data-categoria="instalaciones" data-indice="1">
+            <img src="img/patio.jpg" alt="Patio central y canchas deportivas" loading="lazy" style="filter: hue-rotate(45deg);">
+            <div class="overlay">
+              <span class="overlay-texto">Patio Central</span>
+            </div>
+          </div>
+
+        
+          <div class="galeria-item animacion-entrada scale-in retraso-3" data-categoria="eventos" data-indice="2">
+            <img src="img/independencia.jpg" alt="Izada de bandera en el día de la independencia" loading="lazy" style="filter: hue-rotate(90deg);">
+            <div class="overlay">
+              <span class="overlay-texto">Día de la Independencia</span>
+            </div>
+          </div>
+
+          
+          <div class="galeria-item animacion-entrada scale-in retraso-4" data-categoria="eventos" data-indice="3">
+            <img src="img/feria.jpg" alt="Estudiantes exponiendo en la Feria de Ciencias" loading="lazy" style="filter: hue-rotate(135deg);">
+            <div class="overlay">
+              <span class="overlay-texto">Feria de Ciencias</span>
+            </div>
+          </div>
+
+     
+          <div class="galeria-item animacion-entrada scale-in retraso-5" data-categoria="deportes" data-indice="4">
+            <img src="img/baloncesto.jpg" alt="Equipo de baloncesto femenino" loading="lazy" style="filter: hue-rotate(180deg);">
+            <div class="overlay">
+              <span class="overlay-texto">Equipo de Baloncesto</span>
+            </div>
+          </div>
+
+
+          <div class="galeria-item animacion-entrada scale-in retraso-6" data-categoria="instalaciones" data-indice="5">
+            <img src="img/sala informatica.jpg" alt="Laboratorio de informática equipado" loading="lazy" style="filter: hue-rotate(225deg);">
+            <div class="overlay">
+              <span class="overlay-texto">Sala de Informática</span>
+            </div>
+          </div>
+
+      
+          <div class="galeria-item animacion-entrada scale-in retraso-7" data-categoria="deportes" data-indice="6">
+            <img src="img/juegos inter.jpg" alt="Juegos intercolegiados de microfútbol" loading="lazy" style="filter: hue-rotate(270deg);">
+            <div class="overlay">
+              <span class="overlay-texto">Juegos Intercolegiados</span>
+            </div>
+          </div>
+
+  
+          <div class="galeria-item animacion-entrada scale-in retraso-8" data-categoria="eventos" data-indice="7">
+            <img src="img/danzas.jpg" alt="Presentación del grupo de danzas folclóricas" loading="lazy" style="filter: hue-rotate(315deg);">
+            <div class="overlay">
+              <span class="overlay-texto">Danzas Folclóricas</span>
+            </div>
+          </div>
+
+    
+          <div class="galeria-item animacion-entrada scale-in retraso-8" data-categoria="instalaciones" data-indice="8">
+            <img src="img/bliblioteca.png" alt="Biblioteca escolar con zona de lectura" loading="lazy" style="filter: grayscale(0.5);">
+            <div class="overlay">
+              <span class="overlay-texto">Biblioteca Escolar</span>
+            </div>
+          </div>
+
+        </div><!-- fin grid -->
+
+      </div>
+    </section>
+
+  </main>
+
+  
+  <div class="modal fade" id="modalGaleria" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content" style="background: transparent; border: none;">
+
+        <div class="modal-body p-0 position-relative text-center">
+
+          
+          <button type="button" class="btn-cerrar-modal" data-bs-dismiss="modal" aria-label="Cerrar vista ampliada">
+            <i class="bi bi-x"></i>
+          </button>
+
+          
+          <img src="" id="imagenModal" alt="Vista ampliada" class="img-fluid rounded shadow-lg" style="max-height: 85vh; width: auto; margin: 0 auto; display: block;">
+
+        
+          <div id="textoModal" class="text-white mt-2 text-center bg-dark bg-opacity-75 p-2 rounded d-inline-block mx-auto"></div>
+
+          
+          <button type="button" class="btn-nav-modal btn-nav-prev" id="btnPrev" aria-label="Imagen anterior">
+            <i class="bi bi-chevron-left"></i>
+          </button>
+
+         
+          <button type="button" class="btn-nav-modal btn-nav-next" id="btnNext" aria-label="Siguiente imagen">
+            <i class="bi bi-chevron-right"></i>
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <h2 class="footer-titulo"><i class="bi bi-mortarboard-fill me-2"></i>I.E. Santa María Goretti</h2>
+          <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.7;">
+            Formando líderes con valores desde hace más de 30 años en el corazón del departamento del Putumayo, Colombia.
+          </p>
+          <div class="d-flex gap-3 mt-3">
+            <a href="#" class="footer-link"><i class="bi bi-facebook fs-5"></i></a>
+            <a href="#" class="footer-link"><i class="bi bi-instagram fs-5"></i></a>
+            <a href="#" class="footer-link"><i class="bi bi-youtube fs-5"></i></a>
+            <a href="#" class="footer-link"><i class="bi bi-whatsapp fs-5"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h3 class="footer-titulo" style="font-size:1rem;">Links Rápidos</h3>
+          <nav aria-label="Links rápidos">
+            <a href="index.html" class="footer-link"><i class="bi bi-chevron-right me-1 small"></i>Inicio</a>
+            <a href="nosotros.html" class="footer-link"><i class="bi bi-chevron-right me-1 small"></i>Nosotros</a>
+            <a href="oferta.html" class="footer-link"><i class="bi bi-chevron-right me-1 small"></i>Oferta Educativa</a>
+            <a href="galeria.html" class="footer-link"><i class="bi bi-chevron-right me-1 small"></i>Galería</a>
+            <a href="contacto.html" class="footer-link"><i class="bi bi-chevron-right me-1 small"></i>Contacto</a>
+          </nav>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h3 class="footer-titulo" style="font-size:1rem;">Información de Contacto</h3>
+          <address style="font-style:normal;">
+            <div class="footer-info"><i class="bi bi-geo-alt-fill"></i><span>Calle 5 # 8-42, Barrio Centro<br>Mocoa, Putumayo, Colombia</span></div>
+            <div class="footer-info"><i class="bi bi-telephone-fill"></i><span>(8) 4204567 — Ext. 101</span></div>
+            <div class="footer-info"><i class="bi bi-whatsapp"></i><span>+57 312 456 7890</span></div>
+            <div class="footer-info"><i class="bi bi-envelope-fill"></i><a href="mailto:info@goretti.edu.co" class="footer-link d-inline" style="color:rgba(255,255,255,0.75);">info@goretti.edu.co</a></div>
+          </address>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h3 class="footer-titulo" style="font-size:1rem;">Horario de Atención</h3>
+          <table style="color:rgba(255,255,255,0.75);font-size:0.85rem;width:100%;">
+            <tr><td style="padding:4px 0;font-weight:600;">Lunes – Viernes</td><td style="text-align:right;">7:00am – 5:00pm</td></tr>
+            <tr><td style="padding:4px 0;font-weight:600;">Jornada mañana</td><td style="text-align:right;">7:00am – 12:30pm</td></tr>
+            <tr><td style="padding:4px 0;font-weight:600;">Jornada tarde</td><td style="text-align:right;">12:30pm – 5:00pm</td></tr>
+            <tr><td style="padding:4px 0;font-weight:600;">Sábados</td><td style="text-align:right;">8:00am – 12:00pm</td></tr>
+          </table>
+        </div>
+      </div>
+      <hr class="footer-divider">
+      <p class="footer-creditos">
+        © <span id="anoActual">2025</span> I.E. Santa María Goretti — Mocoa, Putumayo, Colombia. Todos los derechos reservados.
+        <span class="mx-2">|</span> Diseñado con <i class="bi bi-heart-fill" style="color:var(--color-secundario);"></i> para la comunidad educativa.
+      </p>
+    </div>
+  </footer>
+
+  <button id="botonArriba" aria-label="Volver al inicio de la página" title="Ir arriba"><i class="bi bi-arrow-up-short fs-4"></i></button>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/tema.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/galeria.js"></script>
+
+</body>
+</html>
