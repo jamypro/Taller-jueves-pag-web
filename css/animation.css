@@ -1,6 +1,6 @@
 @keyframes fadeIn {
   from {
-    opacity: 0;      
+    opacity: 0;     
   }
   to {
     opacity: 1;     
@@ -14,7 +14,7 @@
   }
   to {
     opacity: 1;
-    transform: translateY(0);  
+    transform: translateY(0);    
   }
 }
 
@@ -32,14 +32,14 @@
 @keyframes slideInRight {
   from {
     opacity: 0;
-    transform: translateX(40px); 
+    transform: translateX(40px);
   }
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
-
+/* Animación: crece desde el centro */
 @keyframes scaleIn {
   from {
     opacity: 0;
@@ -47,7 +47,7 @@
   }
   to {
     opacity: 1;
-    transform: scale(1);   
+    transform: scale(1);
   }
 }
 
@@ -89,28 +89,22 @@
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
-
 .animacion-entrada {
   opacity: 0;
   will-change: opacity, transform;
 }
-
 .fade-in {
   animation: fadeIn 0.6s ease forwards;
 }
-
 .slide-up {
   animation: slideUp 0.5s ease forwards;
 }
-
 .slide-in-izquierda {
   animation: slideInLeft 0.6s ease forwards;
 }
-
 .slide-in-derecha {
   animation: slideInRight 0.6s ease forwards;
 }
-
 .scale-in {
   animation: scaleIn 0.5s ease forwards;
 }
@@ -127,12 +121,10 @@
 .hero-titulo-animado {
   animation: heroEntrada 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-
 .hero-subtitulo-animado {
   animation: slideUp 0.7s ease 0.3s forwards;
-  opacity: 0; 
+  opacity: 0;
 }
-
 .hero-botones-animados {
   animation: fadeIn 0.6s ease 0.6s forwards;
   opacity: 0;
@@ -140,38 +132,31 @@
 
 .linea-dorada-animada {
   animation: lineaExpande 0.8s ease 0.2s forwards;
-  width: 0;
-} 
-
+  width: 0; 
+}
 .hover-zoom {
-  overflow: hidden;       
+  overflow: hidden;      
   border-radius: var(--radio-md, 8px);
 }
-
 .hover-zoom img {
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: transform;
 }
-
 .hover-zoom:hover img {
   transform: scale(1.08);  
 }
-
 .hover-elevar {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   will-change: transform;
 }
-
 .hover-elevar:hover {
   transform: translateY(-6px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
-
 .hover-brillo {
   position: relative;
   overflow: hidden;
 }
-
 .hover-brillo::after {
   content: '';
   position: absolute;
@@ -185,19 +170,16 @@
     rgba(255, 255, 255, 0.25),
     transparent
   );
-  transform: skewX(-20deg);
+  transform: skewX(-20deg); 
   transition: left 0.5s ease;
 }
-
 .hover-brillo:hover::after {
   left: 150%; 
 }
-
 .hover-subrayado {
   position: relative;
   display: inline-block;
 }
-
 .hover-subrayado::after {
   content: '';
   position: absolute;
@@ -208,19 +190,15 @@
   background-color: currentColor; 
   transition: width 0.3s ease;
 }
-
 .hover-subrayado:hover::after {
   width: 100%; 
 }
-
 .animar-pulso {
   animation: pulso 2s ease-in-out infinite;
 }
-
 .animar-rebote {
   animation: rebote 2s ease-in-out infinite;
 }
-
 .spinner-carga {
   width: 40px;
   height: 40px;
@@ -230,12 +208,10 @@
   animation: girar 0.8s linear infinite;
   margin: 0 auto;
 }
-
 body.modo-oscuro .spinner-carga {
   border-color: rgba(212, 172, 13, 0.2);
   border-top-color: var(--color-secundario, #d4ac0d);
 }
-
 button,
 .btn,
 a.btn,
@@ -243,23 +219,18 @@ input[type="submit"],
 input[type="button"] {
   transition: all 0.3s ease !important;
 }
-
 .nav-link {
   transition: color 0.2s ease, background-color 0.2s ease !important;
 }
-
 .galeria-item img {
   transition: transform 0.4s ease !important;
 }
-
 .card {
   transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
-
 .navbar {
   transition: padding 0.3s ease, box-shadow 0.3s ease !important;
 }
-
 .navbar.navbar-scrolled {
   padding-top: 4px !important;
   padding-bottom: 4px !important;
@@ -296,7 +267,6 @@ input[type="button"] {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-
   .animacion-entrada {
     opacity: 1 !important;
     transform: none !important;
