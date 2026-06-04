@@ -1,0 +1,1420 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Nosotros | I.E. Santa María Goretti — Mocoa, Putumayo</title>
+    <meta
+      name="description"
+      content="Conoce la historia, misión, visión y valores de la Institución Educativa Santa María Goretti en Mocoa, Putumayo. Más de 30 años formando líderes con valores."
+    />
+    <meta
+      name="keywords"
+      content="educación, Putumayo, Mocoa, Santa María Goretti, historia, misión, visión, valores"
+    />
+    <meta name="author" content="I.E. Santa María Goretti" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+
+    <style>
+      .timeline {
+        position: relative;
+        padding: 0;
+        list-style: none;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 3px;
+        background: linear-gradient(
+          to bottom,
+          var(--color-primario),
+          var(--color-secundario)
+        );
+        transform: translateX(-50%);
+        border-radius: 3px;
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 3rem;
+        width: 45%;
+      }
+
+      .timeline-item:nth-child(odd) {
+        left: 0;
+        text-align: right;
+        padding-right: 2rem;
+      }
+
+      .timeline-item:nth-child(even) {
+        left: 55%;
+        padding-left: 2rem;
+      }
+
+      .timeline-punto {
+        position: absolute;
+        top: 12px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background-color: var(--color-secundario);
+        border: 3px solid var(--color-primario);
+        box-shadow: 0 0 0 4px rgba(212, 172, 13, 0.2);
+      }
+
+      .timeline-item:nth-child(odd) .timeline-punto {
+        right: -9px;
+      }
+      .timeline-item:nth-child(even) .timeline-punto {
+        left: -9px;
+      }
+
+      .timeline-ano {
+        font-family: var(--fuente-titulo);
+        font-size: 1.4rem;
+        font-weight: 900;
+        color: var(--color-secundario);
+      }
+
+      .timeline-titulo {
+        font-family: var(--fuente-titulo);
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--color-primario);
+        margin-bottom: 0.3rem;
+      }
+
+      body.modo-oscuro .timeline-titulo {
+        color: var(--oscuro-texto);
+      }
+
+      @media (max-width: 768px) {
+        .timeline::before {
+          left: 16px;
+        }
+
+        .timeline-item {
+          width: 100%;
+          left: 0 !important;
+          text-align: left !important;
+          padding-left: 3rem !important;
+          padding-right: 0 !important;
+        }
+
+        .timeline-punto {
+          left: 7px !important;
+          right: auto !important;
+        }
+      }
+
+      .valor-card {
+        border-left: 4px solid var(--color-secundario);
+        transition: var(--transicion);
+      }
+
+      .valor-card:hover {
+        border-left-color: var(--color-primario);
+        transform: translateX(6px);
+      }
+
+      .himno-contenedor {
+        background: linear-gradient(135deg, var(--color-primario), #1f618d);
+        color: white;
+        border-radius: var(--radio-xl);
+        padding: 2.5rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .himno-contenedor::before {
+        content: "♪";
+        position: absolute;
+        font-size: 8rem;
+        opacity: 0.06;
+        right: -1rem;
+        top: -1rem;
+        font-family: serif;
+      }
+
+      .hero-interior {
+        background: linear-gradient(
+          135deg,
+          var(--color-primario) 0%,
+          #1f618d 100%
+        );
+        color: white;
+        padding: 5rem 0 3rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-interior::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background-color: var(--color-blanco);
+        clip-path: ellipse(55% 100% at 50% 100%);
+      }
+
+      body.modo-oscuro .hero-interior::after {
+        background-color: var(--oscuro-fondo);
+      }
+
+      .stat-numero {
+        font-family: var(--fuente-titulo);
+        font-size: 2.8rem;
+        font-weight: 900;
+        color: var(--color-secundario);
+        line-height: 1;
+      }
+
+      .stat-etiqueta {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <nav
+        class="navbar navbar-expand-lg"
+        id="barraNavegacion"
+        aria-label="Navegación principal"
+      >
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <i
+              class="bi bi-mortarboard-fill me-2"
+              style="color: var(--color-secundario)"
+            ></i>
+            I.E. <span>Santa María Goretti</span>
+          </a>
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#menuNavegacion"
+            aria-controls="menuNavegacion"
+            aria-expanded="false"
+            aria-label="Abrir menú de navegación"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="menuNavegacion">
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="nosotros.html">Nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="oferta.html">Oferta Educativa</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="galeria.html">Galería</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contacto.html">Contacto</a>
+              </li>
+              <li class="nav-item d-none d-lg-block">
+                <span
+                  style="
+                    border-left: 1px solid rgba(255, 255, 255, 0.2);
+                    height: 24px;
+                    display: block;
+                    margin: 8px 4px;
+                  "
+                ></span>
+              </li>
+              <li class="nav-item">
+                <button
+                  id="botonTema"
+                  aria-label="Cambiar modo de color"
+                  title="Alternar modo oscuro"
+                >
+                  <i class="bi bi-moon-stars-fill" id="iconoTema"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section
+        class="hero-interior"
+        aria-label="Encabezado de la página Nosotros"
+      >
+        <div class="container text-center">
+          <!-- Migas de pan (breadcrumb): indica dónde está el usuario -->
+          <nav aria-label="Ruta de navegación" class="mb-3">
+            <ol
+              class="breadcrumb justify-content-center"
+              style="background: transparent"
+            >
+              <li class="breadcrumb-item">
+                <a href="index.html" style="color: rgba(255, 255, 255, 0.7)"
+                  >Inicio</a
+                >
+              </li>
+              <li
+                class="breadcrumb-item active"
+                style="color: var(--color-secundario)"
+              >
+                Nosotros
+              </li>
+            </ol>
+          </nav>
+
+          <h1
+            class="hero-titulo-animado"
+            style="font-size: clamp(2rem, 4vw, 3rem)"
+          >
+            Nuestra Institución
+          </h1>
+          <div class="linea-dorada centrada linea-dorada-animada my-3"></div>
+          <p
+            class="hero-subtitulo-animado lead mx-auto"
+            style="max-width: 600px; opacity: 0.9"
+          >
+            Más de 30 años formando personas íntegras, comprometidas con su
+            comunidad y con los valores que nos legó Santa María Goretti.
+          </p>
+
+          <div
+            class="row justify-content-center g-4 mt-3 hero-botones-animados"
+          >
+            <div class="col-auto">
+              <div class="stat-numero">30+</div>
+              <div class="stat-etiqueta">Años de historia</div>
+            </div>
+            <div
+              class="col-auto px-4"
+              style="
+                border-left: 1px solid rgba(255, 255, 255, 0.25);
+                border-right: 1px solid rgba(255, 255, 255, 0.25);
+              "
+            >
+              <div class="stat-numero">800+</div>
+              <div class="stat-etiqueta">Estudiantes</div>
+            </div>
+            <div class="col-auto">
+              <div class="stat-numero">98%</div>
+              <div class="stat-etiqueta">Tasa de graduación</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="historia" aria-label="Historia de la institución">
+        <div class="container">
+          <div class="bloque-centrado mb-5 animacion-entrada slide-up">
+            <h2 class="titulo-seccion">Nuestra Historia</h2>
+            <div class="linea-dorada centrada mb-3"></div>
+            <p class="subtitulo-seccion">
+              Un recorrido por los hitos más importantes de nuestra institución
+              a lo largo de más de tres décadas de servicio educativo.
+            </p>
+          </div>
+
+          <ul class="timeline" aria-label="Línea de tiempo histórica">
+            <li
+              class="timeline-item animacion-entrada slide-in-izquierda retraso-1"
+            >
+              <div class="timeline-punto"></div>
+              <article class="card p-3">
+                <div class="timeline-ano">1990</div>
+                <h3 class="timeline-titulo">Fundación de la Institución</h3>
+                <p class="text-muted small mb-0">
+                  La I.E. Santa María Goretti abre sus puertas con tan solo 4
+                  aulas y 120 estudiantes de básica primaria, bajo la dirección
+                  de la comunidad religiosa local de Mocoa.
+                </p>
+              </article>
+            </li>
+
+            <li
+              class="timeline-item animacion-entrada slide-in-derecha retraso-2"
+            >
+              <div class="timeline-punto"></div>
+              <article class="card p-3">
+                <div class="timeline-ano">1995</div>
+                <h3 class="timeline-titulo">Apertura de Básica Secundaria</h3>
+                <p class="text-muted small mb-0">
+                  Respondiendo a la demanda de la comunidad, se amplía la oferta
+                  educativa con los grados 6° al 9°. La matrícula crece a 350
+                  estudiantes.
+                </p>
+              </article>
+            </li>
+
+            <li
+              class="timeline-item animacion-entrada slide-in-izquierda retraso-3"
+            >
+              <div class="timeline-punto"></div>
+              <article class="card p-3">
+                <div class="timeline-ano">2002</div>
+                <h3 class="timeline-titulo">
+                  Primera Promoción de Bachilleres
+                </h3>
+                <p class="text-muted small mb-0">
+                  Con la apertura de los grados 10° y 11°, egresa la primera
+                  promoción de bachilleres académicos. Un hito histórico para la
+                  comunidad del Putumayo.
+                </p>
+              </article>
+            </li>
+
+            <li
+              class="timeline-item animacion-entrada slide-in-derecha retraso-4"
+            >
+              <div class="timeline-punto"></div>
+              <article class="card p-3">
+                <div class="timeline-ano">2008</div>
+                <h3 class="timeline-titulo">Sede Nueva y Modernización</h3>
+                <p class="text-muted small mb-0">
+                  Se inaugura la nueva planta física con laboratorios de
+                  ciencias, sala de informática y biblioteca. La institución es
+                  reconocida por el Ministerio de Educación Nacional.
+                </p>
+              </article>
+            </li>
+
+            <li
+              class="timeline-item animacion-entrada slide-in-izquierda retraso-5"
+            >
+              <div class="timeline-punto"></div>
+              <article class="card p-3">
+                <div class="timeline-ano">2015</div>
+                <h3 class="timeline-titulo">Acreditación de Calidad</h3>
+                <p class="text-muted small mb-0">
+                  La institución obtiene la certificación de calidad educativa y
+                  es clasificada en categoría A en las pruebas Saber 11, siendo
+                  referente para el departamento del Putumayo.
+                </p>
+              </article>
+            </li>
+
+            <li
+              class="timeline-item animacion-entrada slide-in-derecha retraso-6"
+            >
+              <div class="timeline-punto"></div>
+              <article class="card p-3">
+                <div class="timeline-ano">2025</div>
+                <h3 class="timeline-titulo">35 Años de Excelencia</h3>
+                <p class="text-muted small mb-0">
+                  Celebramos más de tres décadas de historia con más de 800
+                  estudiantes, 50 docentes y cientos de egresados que hoy son
+                  profesionales que engrandecen el Putumayo y Colombia.
+                </p>
+              </article>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section
+        class="seccion-alternada"
+        id="mision"
+        aria-label="Misión institucional"
+      >
+        <div class="container">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-4 text-center animacion-entrada scale-in">
+              <div
+                class="mx-auto mb-3"
+                style="
+                  width: 180px;
+                  height: 180px;
+                  border-radius: 50%;
+                  background: linear-gradient(
+                    135deg,
+                    var(--color-primario),
+                    #2980b9
+                  );
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  box-shadow: 0 20px 40px rgba(26, 82, 118, 0.3);
+                "
+              >
+                <i
+                  class="bi bi-bullseye"
+                  style="font-size: 5rem; color: var(--color-secundario)"
+                ></i>
+              </div>
+              <span class="badge-nivel">Misión</span>
+            </div>
+
+            <div class="col-lg-8 animacion-entrada slide-in-derecha retraso-2">
+              <h2 class="titulo-seccion text-start mb-3">Nuestra Misión</h2>
+              <div class="linea-dorada mb-4"></div>
+              <p
+                class="lead"
+                style="color: var(--color-texto); line-height: 1.8"
+              >
+                La Institución Educativa Santa María Goretti tiene como misión
+                <strong>brindar una educación integral y de calidad</strong>,
+                fundamentada en principios éticos, espirituales y académicos,
+                que forme ciudadanos críticos, responsables y comprometidos con
+                el desarrollo sostenible de su región y del país.
+              </p>
+              <p style="line-height: 1.8" class="text-muted">
+                Desde el nivel preescolar hasta la educación media, trabajamos
+                para que cada estudiante desarrolle sus competencias académicas,
+                sus habilidades para la vida y su sentido de identidad cultural
+                con el territorio del Putumayo amazónico.
+              </p>
+
+              <div class="row g-3 mt-2">
+                <div class="col-sm-4">
+                  <div class="d-flex align-items-center gap-2">
+                    <div
+                      class="icono-circulo"
+                      style="width: 42px; height: 42px; flex-shrink: 0"
+                    >
+                      <i class="bi bi-book-fill small"></i>
+                    </div>
+                    <span class="small fw-semibold">Excelencia académica</span>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="d-flex align-items-center gap-2">
+                    <div
+                      class="icono-circulo"
+                      style="width: 42px; height: 42px; flex-shrink: 0"
+                    >
+                      <i class="bi bi-heart-fill small"></i>
+                    </div>
+                    <span class="small fw-semibold">Formación en valores</span>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="d-flex align-items-center gap-2">
+                    <div
+                      class="icono-circulo"
+                      style="width: 42px; height: 42px; flex-shrink: 0"
+                    >
+                      <i class="bi bi-people-fill small"></i>
+                    </div>
+                    <span class="small fw-semibold">Impacto comunitario</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="vision" aria-label="Visión institucional">
+        <div class="container">
+          <div class="row align-items-center g-5">
+            <!-- Texto de la visión (izquierda) -->
+            <div class="col-lg-8 animacion-entrada slide-in-izquierda">
+              <h2 class="titulo-seccion text-start mb-3">Nuestra Visión</h2>
+              <div class="linea-dorada mb-4"></div>
+              <p class="lead" style="line-height: 1.8">
+                Para el año <strong>2030</strong>, la I.E. Santa María Goretti
+                será reconocida como institución líder en el departamento del
+                Putumayo por su <strong>excelencia académica</strong>, la
+                <strong>formación integral en valores</strong> y su impacto
+                positivo en la transformación social de la comunidad.
+              </p>
+              <p class="text-muted" style="line-height: 1.8">
+                Aspiramos a ser un referente de innovación pedagógica en la
+                región amazónica, con egresados capaces de acceder a la
+                educación superior y de liderar procesos de desarrollo
+                sostenible en sus territorios.
+              </p>
+
+              <div class="row g-3 mt-2">
+                <div class="col-md-6">
+                  <div
+                    class="card p-3 h-100"
+                    style="border-left: 3px solid var(--color-secundario)"
+                  >
+                    <div class="d-flex gap-2 align-items-center mb-2">
+                      <i
+                        class="bi bi-trophy-fill"
+                        style="color: var(--color-secundario)"
+                      ></i>
+                      <strong class="small">Categoría A+</strong>
+                    </div>
+                    <p class="small text-muted mb-0">
+                      Alcanzar la clasificación A+ en pruebas Saber 11 a nivel
+                      departamental.
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div
+                    class="card p-3 h-100"
+                    style="border-left: 3px solid var(--color-secundario)"
+                  >
+                    <div class="d-flex gap-2 align-items-center mb-2">
+                      <i
+                        class="bi bi-laptop-fill"
+                        style="color: var(--color-secundario)"
+                      ></i>
+                      <strong class="small">Aula Digital</strong>
+                    </div>
+                    <p class="small text-muted mb-0">
+                      Implementar un aula STEM completamente equipada para el
+                      2027.
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div
+                    class="card p-3 h-100"
+                    style="border-left: 3px solid var(--color-secundario)"
+                  >
+                    <div class="d-flex gap-2 align-items-center mb-2">
+                      <i
+                        class="bi bi-mortarboard-fill"
+                        style="color: var(--color-secundario)"
+                      ></i>
+                      <strong class="small">90% a la universidad</strong>
+                    </div>
+                    <p class="small text-muted mb-0">
+                      Que el 90% de nuestros egresados continúen estudios
+                      superiores.
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div
+                    class="card p-3 h-100"
+                    style="border-left: 3px solid var(--color-secundario)"
+                  >
+                    <div class="d-flex gap-2 align-items-center mb-2">
+                      <i
+                        class="bi bi-globe-americas"
+                        style="color: var(--color-secundario)"
+                      ></i>
+                      <strong class="small">Bilingüismo</strong>
+                    </div>
+                    <p class="small text-muted mb-0">
+                      Desarrollar un programa de inglés intensivo desde grado 1°
+                      al 11°.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="col-lg-4 text-center animacion-entrada scale-in retraso-3"
+            >
+              <div
+                class="mx-auto"
+                style="
+                  width: 180px;
+                  height: 180px;
+                  border-radius: 50%;
+                  background: linear-gradient(135deg, #d4ac0d, #f0c040);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  box-shadow: 0 20px 40px rgba(212, 172, 13, 0.35);
+                "
+              >
+                <i
+                  class="bi bi-eye-fill"
+                  style="font-size: 5rem; color: white"
+                ></i>
+              </div>
+              <span class="badge-nivel mt-3 d-inline-block">Visión 2030</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="seccion-alternada"
+        id="valores"
+        aria-label="Valores institucionales"
+      >
+        <div class="container">
+          <div class="bloque-centrado mb-5 animacion-entrada slide-up">
+            <h2 class="titulo-seccion">Nuestros Valores</h2>
+            <div class="linea-dorada centrada mb-3"></div>
+            <p class="subtitulo-seccion">
+              Los valores que nos guían en el camino de formar personas
+              íntegras, inspirados en el ejemplo de vida de Santa María Goretti.
+            </p>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-lg-4 col-md-6 animacion-entrada slide-up retraso-1">
+              <article class="card valor-card h-100">
+                <div class="card-body p-4">
+                  <div class="d-flex align-items-center gap-3 mb-3">
+                    <div class="icono-circulo">✝️</div>
+                    <h3
+                      class="h5 mb-0 fw-bold"
+                      style="
+                        font-family: var(--fuente-titulo);
+                        color: var(--color-primario);
+                      "
+                    >
+                      Fe
+                    </h3>
+                  </div>
+                  <p class="text-muted mb-0">
+                    Cultivamos la dimensión espiritual de cada estudiante,
+                    respetando la diversidad de creencias y fomentando un
+                    sentido trascendente de la vida.
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-lg-4 col-md-6 animacion-entrada slide-up retraso-2">
+              <article class="card valor-card h-100">
+                <div class="card-body p-4">
+                  <div class="d-flex align-items-center gap-3 mb-3">
+                    <div class="icono-circulo">🤝</div>
+                    <h3
+                      class="h5 mb-0 fw-bold"
+                      style="
+                        font-family: var(--fuente-titulo);
+                        color: var(--color-primario);
+                      "
+                    >
+                      Respeto
+                    </h3>
+                  </div>
+                  <p class="text-muted mb-0">
+                    Reconocemos y valoramos la dignidad de cada persona, sus
+                    diferencias, sus ideas y su cultura, especialmente la
+                    riqueza multicultural del Putumayo.
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-lg-4 col-md-6 animacion-entrada slide-up retraso-3">
+              <article class="card valor-card h-100">
+                <div class="card-body p-4">
+                  <div class="d-flex align-items-center gap-3 mb-3">
+                    <div class="icono-circulo">⚖️</div>
+                    <h3
+                      class="h5 mb-0 fw-bold"
+                      style="
+                        font-family: var(--fuente-titulo);
+                        color: var(--color-primario);
+                      "
+                    >
+                      Honestidad
+                    </h3>
+                  </div>
+                  <p class="text-muted mb-0">
+                    Actuamos con transparencia, verdad e integridad en todos
+                    nuestros actos, formando ciudadanos que construyen confianza
+                    en su comunidad.
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-lg-4 col-md-6 animacion-entrada slide-up retraso-4">
+              <article class="card valor-card h-100">
+                <div class="card-body p-4">
+                  <div class="d-flex align-items-center gap-3 mb-3">
+                    <div class="icono-circulo">💛</div>
+                    <h3
+                      class="h5 mb-0 fw-bold"
+                      style="
+                        font-family: var(--fuente-titulo);
+                        color: var(--color-primario);
+                      "
+                    >
+                      Solidaridad
+                    </h3>
+                  </div>
+                  <p class="text-muted mb-0">
+                    Nos preocupamos por el bienestar del otro y trabajamos
+                    juntos por un Putumayo más justo, inclusivo y próspero para
+                    todos sus habitantes.
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-lg-4 col-md-6 animacion-entrada slide-up retraso-5">
+              <article class="card valor-card h-100">
+                <div class="card-body p-4">
+                  <div class="d-flex align-items-center gap-3 mb-3">
+                    <div class="icono-circulo">⭐</div>
+                    <h3
+                      class="h5 mb-0 fw-bold"
+                      style="
+                        font-family: var(--fuente-titulo);
+                        color: var(--color-primario);
+                      "
+                    >
+                      Excelencia
+                    </h3>
+                  </div>
+                  <p class="text-muted mb-0">
+                    Nos esforzamos por dar lo mejor de nosotros en cada tarea,
+                    mejorando continuamente para alcanzar los más altos
+                    estándares académicos y humanos.
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-lg-4 col-md-6 animacion-entrada slide-up retraso-6">
+              <article class="card valor-card h-100">
+                <div class="card-body p-4">
+                  <div class="d-flex align-items-center gap-3 mb-3">
+                    <div class="icono-circulo">🌿</div>
+                    <h3
+                      class="h5 mb-0 fw-bold"
+                      style="
+                        font-family: var(--fuente-titulo);
+                        color: var(--color-primario);
+                      "
+                    >
+                      Identidad
+                    </h3>
+                  </div>
+                  <p class="text-muted mb-0">
+                    Promovemos el amor por nuestra tierra, la cultura amazónica
+                    y las tradiciones de los pueblos del Putumayo, como base de
+                    nuestra identidad como colombianos.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="patrona" aria-label="Nuestra patrona Santa María Goretti">
+        <div class="container">
+          <div class="row align-items-center g-5 justify-content-center">
+            <div class="col-lg-8 animacion-entrada slide-up">
+              <div class="himno-contenedor">
+                <div class="d-flex align-items-center gap-3 mb-4">
+                  <div
+                    style="
+                      width: 60px;
+                      height: 60px;
+                      border-radius: 50%;
+                      background: rgba(212, 172, 13, 0.2);
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      flex-shrink: 0;
+                    "
+                  >
+                    <i
+                      class="bi bi-flower1"
+                      style="font-size: 1.8rem; color: var(--color-secundario)"
+                    ></i>
+                  </div>
+                  <div>
+                    <h2
+                      class="mb-0"
+                      style="
+                        font-family: var(--fuente-titulo);
+                        font-size: 1.5rem;
+                      "
+                    >
+                      Nuestra Patrona
+                    </h2>
+                    <p
+                      class="mb-0"
+                      style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem"
+                    >
+                      Santa María Goretti — Mártir de la pureza
+                    </p>
+                  </div>
+                </div>
+
+                <p style="line-height: 1.8; opacity: 0.9">
+                  <strong>María Goretti</strong> (1890–1902) fue una joven
+                  italiana que a los 11 años prefirió la muerte antes que
+                  comprometer sus valores y su fe. Fue canonizada por el Papa
+                  Pío XII en 1950 y es patrona de la juventud, las víctimas y
+                  quienes luchan por mantener su integridad en tiempos
+                  difíciles.
+                </p>
+                <p style="line-height: 1.8; opacity: 0.9">
+                  Su vida nos enseña que los valores no son negociables, que el
+                  perdón es más poderoso que el rencor, y que la coherencia
+                  entre lo que creemos y lo que hacemos es la verdadera
+                  grandeza.
+                </p>
+
+                <div class="d-flex flex-wrap gap-2 mt-3">
+                  <span
+                    class="badge"
+                    style="
+                      background: rgba(212, 172, 13, 0.2);
+                      color: var(--color-secundario);
+                      border: 1px solid rgba(212, 172, 13, 0.3);
+                    "
+                  >
+                    Fiesta: 6 de julio
+                  </span>
+                  <span
+                    class="badge"
+                    style="
+                      background: rgba(212, 172, 13, 0.2);
+                      color: var(--color-secundario);
+                      border: 1px solid rgba(212, 172, 13, 0.3);
+                    "
+                  >
+                    Patrona de la juventud
+                  </span>
+                  <span
+                    class="badge"
+                    style="
+                      background: rgba(212, 172, 13, 0.2);
+                      color: var(--color-secundario);
+                      border: 1px solid rgba(212, 172, 13, 0.3);
+                    "
+                  >
+                    Símbolo de fortaleza
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="seccion-alternada"
+        id="equipo"
+        aria-label="Equipo docente"
+      >
+        <div class="container">
+          <div class="bloque-centrado mb-5 animacion-entrada slide-up">
+            <h2 class="titulo-seccion">Nuestro Equipo Docente</h2>
+            <div class="linea-dorada centrada mb-3"></div>
+            <p class="subtitulo-seccion">
+              Profesionales comprometidos con la educación y el desarrollo
+              integral de nuestros estudiantes.
+            </p>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-lg-3 col-sm-6 animacion-entrada scale-in retraso-1">
+              <article class="card tarjeta-docente hover-elevar h-100">
+                <div
+                  class="avatar-docente d-flex align-items-center justify-content-center"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      var(--color-primario),
+                      #2980b9
+                    );
+                    font-size: 2rem;
+                    font-weight: 700;
+                    color: white;
+                    font-family: var(--fuente-titulo);
+                  "
+                >
+                  JR
+                </div>
+                <h3 class="nombre-docente">Mg. José Rivera</h3>
+                <p class="cargo-docente">Rector</p>
+                <hr
+                  style="
+                    border-color: var(--color-borde);
+                    width: 40%;
+                    margin: 0.5rem auto;
+                  "
+                />
+                <p class="small text-muted mt-2">
+                  Magíster en Educación. 20 años de experiencia en
+                  administración educativa.
+                </p>
+                <div class="d-flex gap-2 justify-content-center mt-2">
+                  <a
+                    href="mailto:rector@goretti.edu.co"
+                    class="text-muted"
+                    aria-label="Correo del rector"
+                  >
+                    <i class="bi bi-envelope-fill"></i>
+                  </a>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-lg-3 col-sm-6 animacion-entrada scale-in retraso-2">
+              <article class="card tarjeta-docente hover-elevar h-100">
+                <div
+                  class="avatar-docente d-flex align-items-center justify-content-center"
+                  style="
+                    background: linear-gradient(135deg, #8e44ad, #c39bd3);
+                    font-size: 2rem;
+                    font-weight: 700;
+                    color: white;
+                    font-family: var(--fuente-titulo);
+                  "
+                >
+                  LM
+                </div>
+                <h3 class="nombre-docente">Esp. Laura Muñoz</h3>
+                <p class="cargo-docente">Coordinadora Académica</p>
+                <hr
+                  style="
+                    border-color: var(--color-borde);
+                    width: 40%;
+                    margin: 0.5rem auto;
+                  "
+                />
+                <p class="small text-muted mt-2">
+                  Especialista en currículo y evaluación. Docente de Matemáticas
+                  con 15 años de experiencia.
+                </p>
+                <div class="d-flex gap-2 justify-content-center mt-2">
+                  <a
+                    href="mailto:academica@goretti.edu.co"
+                    class="text-muted"
+                    aria-label="Correo de coordinación académica"
+                  >
+                    <i class="bi bi-envelope-fill"></i>
+                  </a>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-lg-3 col-sm-6 animacion-entrada scale-in retraso-3">
+              <article class="card tarjeta-docente hover-elevar h-100">
+                <div
+                  class="avatar-docente d-flex align-items-center justify-content-center"
+                  style="
+                    background: linear-gradient(135deg, #1e8449, #58d68d);
+                    font-size: 2rem;
+                    font-weight: 700;
+                    color: white;
+                    font-family: var(--fuente-titulo);
+                  "
+                >
+                  CA
+                </div>
+                <h3 class="nombre-docente">Lic. Carlos Andrade</h3>
+                <p class="cargo-docente">Coord. de Convivencia</p>
+                <hr
+                  style="
+                    border-color: var(--color-borde);
+                    width: 40%;
+                    margin: 0.5rem auto;
+                  "
+                />
+                <p class="small text-muted mt-2">
+                  Licenciado en Ciencias Sociales. Mediador de conflictos y
+                  orientador escolar.
+                </p>
+                <div class="d-flex gap-2 justify-content-center mt-2">
+                  <a
+                    href="mailto:convivencia@goretti.edu.co"
+                    class="text-muted"
+                    aria-label="Correo de convivencia"
+                  >
+                    <i class="bi bi-envelope-fill"></i>
+                  </a>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-lg-3 col-sm-6 animacion-entrada scale-in retraso-4">
+              <article class="card tarjeta-docente hover-elevar h-100">
+                <div
+                  class="avatar-docente d-flex align-items-center justify-content-center"
+                  style="
+                    background: linear-gradient(135deg, #d4ac0d, #f0c040);
+                    font-size: 2rem;
+                    font-weight: 700;
+                    color: white;
+                    font-family: var(--fuente-titulo);
+                  "
+                >
+                  AP
+                </div>
+                <h3 class="nombre-docente">Lic. Ana Perdomo</h3>
+                <p class="cargo-docente">Docente de Ciencias</p>
+                <hr
+                  style="
+                    border-color: var(--color-borde);
+                    width: 40%;
+                    margin: 0.5rem auto;
+                  "
+                />
+                <p class="small text-muted mt-2">
+                  Licenciada en Biología y Química. Coordinadora del proyecto de
+                  ciencias ambientales.
+                </p>
+                <div class="d-flex gap-2 justify-content-center mt-2">
+                  <a
+                    href="mailto:ciencias@goretti.edu.co"
+                    class="text-muted"
+                    aria-label="Correo de ciencias"
+                  >
+                    <i class="bi bi-envelope-fill"></i>
+                  </a>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-lg-3 col-sm-6 animacion-entrada scale-in retraso-5">
+              <article class="card tarjeta-docente hover-elevar h-100">
+                <div
+                  class="avatar-docente d-flex align-items-center justify-content-center"
+                  style="
+                    background: linear-gradient(135deg, #c0392b, #e74c3c);
+                    font-size: 2rem;
+                    font-weight: 700;
+                    color: white;
+                    font-family: var(--fuente-titulo);
+                  "
+                >
+                  MT
+                </div>
+                <h3 class="nombre-docente">Esp. Mario Torres</h3>
+                <p class="cargo-docente">Docente de Tecnología</p>
+                <hr
+                  style="
+                    border-color: var(--color-borde);
+                    width: 40%;
+                    margin: 0.5rem auto;
+                  "
+                />
+                <p class="small text-muted mt-2">
+                  Especialista en informática educativa. Lidera el laboratorio
+                  de cómputo y robótica.
+                </p>
+                <div class="d-flex gap-2 justify-content-center mt-2">
+                  <a
+                    href="mailto:tecnologia@goretti.edu.co"
+                    class="text-muted"
+                    aria-label="Correo de tecnología"
+                  >
+                    <i class="bi bi-envelope-fill"></i>
+                  </a>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-lg-3 col-sm-6 animacion-entrada scale-in retraso-6">
+              <article class="card tarjeta-docente hover-elevar h-100">
+                <div
+                  class="avatar-docente d-flex align-items-center justify-content-center"
+                  style="
+                    background: linear-gradient(135deg, #2e86c1, #85c1e9);
+                    font-size: 2rem;
+                    font-weight: 700;
+                    color: white;
+                    font-family: var(--fuente-titulo);
+                  "
+                >
+                  SC
+                </div>
+                <h3 class="nombre-docente">Lic. Sandra Castro</h3>
+                <p class="cargo-docente">Docente de Español</p>
+                <hr
+                  style="
+                    border-color: var(--color-borde);
+                    width: 40%;
+                    margin: 0.5rem auto;
+                  "
+                />
+                <p class="small text-muted mt-2">
+                  Licenciada en Lengua Castellana. Coordinadora del periódico
+                  escolar y el club de lectura.
+                </p>
+                <div class="d-flex gap-2 justify-content-center mt-2">
+                  <a
+                    href="mailto:espanol@goretti.edu.co"
+                    class="text-muted"
+                    aria-label="Correo de español"
+                  >
+                    <i class="bi bi-envelope-fill"></i>
+                  </a>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-lg-3 col-sm-6 animacion-entrada scale-in retraso-7">
+              <article class="card tarjeta-docente hover-elevar h-100">
+                <div
+                  class="avatar-docente d-flex align-items-center justify-content-center"
+                  style="
+                    background: linear-gradient(135deg, #117a65, #1abc9c);
+                    font-size: 2rem;
+                    font-weight: 700;
+                    color: white;
+                    font-family: var(--fuente-titulo);
+                  "
+                >
+                  RP
+                </div>
+                <h3 class="nombre-docente">Lic. Roberto Páez</h3>
+                <p class="cargo-docente">Docente de Educación Física</p>
+                <hr
+                  style="
+                    border-color: var(--color-borde);
+                    width: 40%;
+                    margin: 0.5rem auto;
+                  "
+                />
+                <p class="small text-muted mt-2">
+                  Licenciado en Educación Física. Director de los equipos
+                  deportivos institucionales.
+                </p>
+                <div class="d-flex gap-2 justify-content-center mt-2">
+                  <a
+                    href="mailto:deportes@goretti.edu.co"
+                    class="text-muted"
+                    aria-label="Correo de educación física"
+                  >
+                    <i class="bi bi-envelope-fill"></i>
+                  </a>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-lg-3 col-sm-6 animacion-entrada scale-in retraso-8">
+              <article class="card tarjeta-docente hover-elevar h-100">
+                <div
+                  class="avatar-docente d-flex align-items-center justify-content-center"
+                  style="
+                    background: linear-gradient(135deg, #6c3483, #a569bd);
+                    font-size: 2rem;
+                    font-weight: 700;
+                    color: white;
+                    font-family: var(--fuente-titulo);
+                  "
+                >
+                  VG
+                </div>
+                <h3 class="nombre-docente">Mg. Valentina Gil</h3>
+                <p class="cargo-docente">Docente de Inglés</p>
+                <hr
+                  style="
+                    border-color: var(--color-borde);
+                    width: 40%;
+                    margin: 0.5rem auto;
+                  "
+                />
+                <p class="small text-muted mt-2">
+                  Magíster en Enseñanza del Inglés. Certificada por Cambridge.
+                  Lidera el club bilingüe.
+                </p>
+                <div class="d-flex gap-2 justify-content-center mt-2">
+                  <a
+                    href="mailto:ingles@goretti.edu.co"
+                    class="text-muted"
+                    aria-label="Correo de inglés"
+                  >
+                    <i class="bi bi-envelope-fill"></i>
+                  </a>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <p class="text-center text-muted mt-4 animacion-entrada fade-in">
+            <i class="bi bi-info-circle me-1"></i>
+            Contamos con un equipo de más de <strong>50 docentes</strong> en
+            todas las áreas del conocimiento. ¿Quieres unirte a nuestro equipo?
+            <a
+              href="contacto.html"
+              style="color: var(--color-primario); font-weight: 600"
+            >
+              Contáctanos <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer role="contentinfo">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4 col-md-6">
+            <h2 class="footer-titulo">
+              <i class="bi bi-mortarboard-fill me-2"></i>I.E. Santa María
+              Goretti
+            </h2>
+            <p
+              style="
+                color: rgba(255, 255, 255, 0.75);
+                font-size: 0.9rem;
+                line-height: 1.7;
+              "
+            >
+              Formando líderes con valores desde hace más de 30 años en el
+              corazón del departamento del Putumayo, Colombia.
+            </p>
+            <div class="d-flex gap-3 mt-3">
+              <a href="#" class="footer-link" aria-label="Facebook"
+                ><i class="bi bi-facebook fs-5"></i
+              ></a>
+              <a href="#" class="footer-link" aria-label="Instagram"
+                ><i class="bi bi-instagram fs-5"></i
+              ></a>
+              <a href="#" class="footer-link" aria-label="YouTube"
+                ><i class="bi bi-youtube fs-5"></i
+              ></a>
+              <a href="#" class="footer-link" aria-label="WhatsApp"
+                ><i class="bi bi-whatsapp fs-5"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6">
+            <h3 class="footer-titulo" style="font-size: 1rem">Links Rápidos</h3>
+            <nav aria-label="Links rápidos del footer">
+              <a href="index.html" class="footer-link"
+                ><i class="bi bi-chevron-right me-1 small"></i>Inicio</a
+              >
+              <a href="nosotros.html" class="footer-link"
+                ><i class="bi bi-chevron-right me-1 small"></i>Nosotros</a
+              >
+              <a href="oferta.html" class="footer-link"
+                ><i class="bi bi-chevron-right me-1 small"></i>Oferta
+                Educativa</a
+              >
+              <a href="galeria.html" class="footer-link"
+                ><i class="bi bi-chevron-right me-1 small"></i>Galería</a
+              >
+              <a href="contacto.html" class="footer-link"
+                ><i class="bi bi-chevron-right me-1 small"></i>Contacto</a
+              >
+            </nav>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <h3 class="footer-titulo" style="font-size: 1rem">
+              Información de Contacto
+            </h3>
+            <address style="font-style: normal">
+              <div class="footer-info">
+                <i class="bi bi-geo-alt-fill"></i
+                ><span
+                  >Calle 5 # 8-42, Barrio Centro<br />Mocoa, Putumayo,
+                  Colombia</span
+                >
+              </div>
+              <div class="footer-info">
+                <i class="bi bi-telephone-fill"></i
+                ><span>(8) 4204567 — Ext. 101</span>
+              </div>
+              <div class="footer-info">
+                <i class="bi bi-whatsapp"></i><span>+57 312 456 7890</span>
+              </div>
+              <div class="footer-info">
+                <i class="bi bi-envelope-fill"></i>
+                <a
+                  href="mailto:info@goretti.edu.co"
+                  class="footer-link d-inline"
+                  style="color: rgba(255, 255, 255, 0.75)"
+                  >info@goretti.edu.co</a
+                >
+              </div>
+            </address>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <h3 class="footer-titulo" style="font-size: 1rem">
+              Horario de Atención
+            </h3>
+            <table
+              style="
+                color: rgba(255, 255, 255, 0.75);
+                font-size: 0.85rem;
+                width: 100%;
+              "
+            >
+              <tr>
+                <td style="padding: 4px 0; font-weight: 600">
+                  Lunes – Viernes
+                </td>
+                <td style="text-align: right">7:00am – 5:00pm</td>
+              </tr>
+              <tr>
+                <td style="padding: 4px 0; font-weight: 600">Jornada mañana</td>
+                <td style="text-align: right">7:00am – 12:30pm</td>
+              </tr>
+              <tr>
+                <td style="padding: 4px 0; font-weight: 600">Jornada tarde</td>
+                <td style="text-align: right">12:30pm – 5:00pm</td>
+              </tr>
+              <tr>
+                <td style="padding: 4px 0; font-weight: 600">Sábados</td>
+                <td style="text-align: right">8:00am – 12:00pm</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <hr class="footer-divider" />
+        <p class="footer-creditos">
+          © <span id="anoActual">2025</span> I.E. Santa María Goretti — Mocoa,
+          Putumayo, Colombia. Todos los derechos reservados.
+          <span class="mx-2">|</span>
+          Diseñado con
+          <i
+            class="bi bi-heart-fill"
+            style="color: var(--color-secundario)"
+          ></i>
+          para la comunidad educativa.
+        </p>
+      </div>
+    </footer>
+
+    <button
+      id="botonArriba"
+      aria-label="Volver al inicio de la página"
+      title="Ir arriba"
+    >
+      <i class="bi bi-arrow-up-short fs-4"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/tema.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
