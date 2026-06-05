@@ -1,510 +1,834 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Oferta Educativa | I.E. Santa María Goretti</title>
+    <meta
+      name="description"
+      content="Conoce nuestra oferta educativa: Preescolar, Primaria, Secundaria y Media. Modelo pedagógico integral en la I.E. Santa María Goretti de Mocoa."
+    />
+    <meta
+      name="keywords"
+      content="oferta educativa, preescolar, primaria, bachillerato, educación media, Mocoa, Putumayo"
+    />
+    <meta name="author" content="I.E. Santa María Goretti" />
 
-  <title>Oferta Educativa | I.E. Santa María Goretti</title>
-  <meta name="description" content="Conoce nuestra oferta educativa: Preescolar, Primaria, Secundaria y Media. Modelo pedagógico integral en la I.E. Santa María Goretti de Mocoa.">
-  <meta name="keywords" content="oferta educativa, preescolar, primaria, bachillerato, educación media, Mocoa, Putumayo">
-  <meta name="author" content="I.E. Santa María Goretti">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/animations.css" />
 
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/animations.css">
+    <style>
+      .hero-interior {
+        background: linear-gradient(
+          135deg,
+          var(--color-primario) 0%,
+          #1f618d 100%
+        );
+        color: white;
+        padding: 5rem 0 3rem;
+        position: relative;
+        overflow: hidden;
+      }
 
-  <style>
-    .hero-interior {
-      background: linear-gradient(135deg, var(--color-primario) 0%, #1f618d 100%);
-      color: white;
-      padding: 5rem 0 3rem;
-      position: relative;
-      overflow: hidden;
-    }
+      .hero-interior::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background-color: var(--color-blanco);
+        clip-path: ellipse(55% 100% at 50% 100%);
+      }
 
-    .hero-interior::after {
-      content: '';
-      position: absolute;
-      bottom: -1px;
-      left: 0;
-      right: 0;
-      height: 60px;
-      background-color: var(--color-blanco);
-      clip-path: ellipse(55% 100% at 50% 100%);
-    }
+      body.modo-oscuro .hero-interior::after {
+        background-color: var(--oscuro-fondo);
+      }
 
-    body.modo-oscuro .hero-interior::after {
-      background-color: var(--oscuro-fondo);
-    }
+      .accordion-button {
+        padding: 1.25rem 1.5rem;
+        font-size: 1.1rem;
+      }
 
-    .accordion-button {
-      padding: 1.25rem 1.5rem;
-      font-size: 1.1rem;
-    }
+      .accordion-button:not(.collapsed)::after {
+        filter: brightness(0) invert(1);
+      }
 
-    .accordion-button:not(.collapsed)::after {
-      filter: brightness(0) invert(1);
-    }
+      .accordion-body {
+        padding: 2rem;
+        background-color: var(--color-blanco);
+      }
 
-    .accordion-body {
-      padding: 2rem;
-      background-color: var(--color-blanco);
-    }
+      .lista-asignaturas {
+        padding-left: 0;
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 0.5rem;
+      }
 
-    .lista-asignaturas {
-      padding-left: 0;
-      list-style: none;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 0.5rem;
-    }
+      .lista-asignaturas li {
+        position: relative;
+        padding-left: 1.5rem;
+      }
 
-    .lista-asignaturas li {
-      position: relative;
-      padding-left: 1.5rem;
-    }
+      .lista-asignaturas li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--color-secundario);
+        font-weight: bold;
+      }
 
-    .lista-asignaturas li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: var(--color-secundario);
-      font-weight: bold;
-    }
+      .tarjeta-programa {
+        border: 1px solid var(--color-borde);
+        border-radius: var(--radio-lg);
+        padding: 2rem;
+        height: 100%;
+        transition: var(--transicion);
+        background-color: var(--color-blanco);
+      }
 
-    .tarjeta-programa {
-      border: 1px solid var(--color-borde);
-      border-radius: var(--radio-lg);
-      padding: 2rem;
-      height: 100%;
-      transition: var(--transicion);
-      background-color: var(--color-blanco);
-    }
+      .tarjeta-programa:hover {
+        border-color: var(--color-secundario);
+        box-shadow: var(--sombra-md);
+        transform: translateY(-5px);
+      }
 
-    .tarjeta-programa:hover {
-      border-color: var(--color-secundario);
-      box-shadow: var(--sombra-md);
-      transform: translateY(-5px);
-    }
+      body.modo-oscuro .tarjeta-programa {
+        background-color: var(--oscuro-tarjeta);
+        border-color: var(--oscuro-superficie);
+      }
+    </style>
+  </head>
 
-    body.modo-oscuro .tarjeta-programa {
-      background-color: var(--oscuro-tarjeta);
-      border-color: var(--oscuro-superficie);
-    }
-  </style>
-</head>
-
-<body>
-
-  <header>
-    <nav class="navbar navbar-expand-lg" id="barraNavegacion" aria-label="Navegación principal">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">
-          <i class="bi bi-mortarboard-fill me-2" style="color: var(--color-secundario);"></i>
-          I.E. <span>Santa María Goretti</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacion" aria-controls="menuNavegacion" aria-expanded="false" aria-label="Abrir menú de navegación">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="menuNavegacion">
-          <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
-            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-            <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
-            <li class="nav-item"><a class="nav-link" href="oferta.html">Oferta Educativa</a></li>
-            <li class="nav-item"><a class="nav-link" href="galeria.html">Galería</a></li>
-            <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
-            <li class="nav-item d-none d-lg-block">
-              <span style="border-left:1px solid rgba(255,255,255,0.2);height:24px;display:block;margin:8px 4px;"></span>
-            </li>
-            <li class="nav-item">
-              <button id="botonTema" aria-label="Cambiar modo de color" title="Alternar modo oscuro">
-                <i class="bi bi-moon-stars-fill" id="iconoTema"></i>
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-
-  <main>
-
-    <section class="hero-interior" aria-label="Encabezado de la página Oferta Educativa">
-      <div class="container text-center">
-        <nav aria-label="Ruta de navegación" class="mb-3">
-          <ol class="breadcrumb justify-content-center" style="background:transparent;">
-            <li class="breadcrumb-item"><a href="index.html" style="color:rgba(255,255,255,0.7);">Inicio</a></li>
-            <li class="breadcrumb-item active" style="color:var(--color-secundario);">Oferta Educativa</li>
-          </ol>
-        </nav>
-        <h1 class="hero-titulo-animado" style="font-size: clamp(2rem, 4vw, 3rem);">
-          Nuestra Oferta Educativa
-        </h1>
-        <div class="linea-dorada centrada linea-dorada-animada my-3"></div>
-        <p class="hero-subtitulo-animado lead mx-auto" style="max-width:700px; opacity:0.9;">
-          Acompañamos a nuestros estudiantes desde sus primeros pasos escolares
-          hasta su preparación para la educación superior y la vida laboral.
-        </p>
-      </div>
-    </section>
-
-
-    <section id="modelo-pedagogico">
-      <div class="container">
-        <div class="row align-items-center g-5">
-          <div class="col-lg-6 animacion-entrada slide-in-izquierda">
-            <h2 class="titulo-seccion text-start mb-3">Modelo Pedagógico Integral</h2>
-            <div class="linea-dorada mb-4"></div>
-            <p style="line-height: 1.8;">
-              En la I.E. Santa María Goretti implementamos un modelo pedagógico
-              <strong>constructivista con enfoque social y humanista</strong>.
-              Creemos que el estudiante es el protagonista activo de su propio
-              aprendizaje.
-            </p>
-            <p class="text-muted" style="line-height: 1.8;">
-              Nuestros currículos están diseñados no solo para transmitir
-              conocimientos científicos y tecnológicos, sino para desarrollar
-              el pensamiento crítico, la creatividad y, sobre todo, valores éticos
-              y espirituales que fortalezcan el tejido social del Putumayo.
-            </p>
-            <ul class="mt-4 text-muted" style="line-height: 2;">
-              <li><i class="bi bi-check-circle-fill me-2" style="color:var(--color-secundario);"></i> Aprendizaje basado en proyectos (ABP)</li>
-              <li><i class="bi bi-check-circle-fill me-2" style="color:var(--color-secundario);"></i> Articulación con el entorno amazónico</li>
-              <li><i class="bi bi-check-circle-fill me-2" style="color:var(--color-secundario);"></i> Evaluación formativa y continua</li>
-              <li><i class="bi bi-check-circle-fill me-2" style="color:var(--color-secundario);"></i> Inclusión educativa</li>
+  <body>
+    <header>
+      <nav
+        class="navbar navbar-expand-lg"
+        id="barraNavegacion"
+        aria-label="Navegación principal"
+      >
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <i
+              class="bi bi-mortarboard-fill me-2"
+              style="color: var(--color-secundario)"
+            ></i>
+            I.E. <span>Santa María Goretti</span>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#menuNavegacion"
+            aria-controls="menuNavegacion"
+            aria-expanded="false"
+            aria-label="Abrir menú de navegación"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="menuNavegacion">
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="nosotros.html">Nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="oferta.html">Oferta Educativa</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="galeria.html">Galería</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contacto.html">Contacto</a>
+              </li>
+              <li class="nav-item d-none d-lg-block">
+                <span
+                  style="
+                    border-left: 1px solid rgba(255, 255, 255, 0.2);
+                    height: 24px;
+                    display: block;
+                    margin: 8px 4px;
+                  "
+                ></span>
+              </li>
+              <li class="nav-item">
+                <button
+                  id="botonTema"
+                  aria-label="Cambiar modo de color"
+                  title="Alternar modo oscuro"
+                >
+                  <i class="bi bi-moon-stars-fill" id="iconoTema"></i>
+                </button>
+              </li>
             </ul>
           </div>
-          <div class="col-lg-6 animacion-entrada slide-in-derecha retraso-2">
-            <div class="position-relative p-3">
-              <div style="background:var(--color-primario); width:100%; height:100%; position:absolute; top:20px; left:-20px; border-radius:var(--radio-lg); z-index:-1;"></div>
-              <img src="img/placeholder.jpg" alt="Estudiantes en el laboratorio" class="img-fluid rounded-4 shadow-lg"
-                   style="width:100%; aspect-ratio:4/3; object-fit:cover; background-color:#ddd;">
-            </div>
-          </div>
         </div>
-      </div>
-    </section>
+      </nav>
+    </header>
 
-    <section class="seccion-alternada" id="niveles">
-      <div class="container">
-        <div class="bloque-centrado mb-5 animacion-entrada slide-up">
-          <h2 class="titulo-seccion">Niveles Educativos</h2>
-          <div class="linea-dorada centrada mb-3"></div>
-          <p class="subtitulo-seccion">
-            Conoce en detalle qué ofrecemos en cada una de las etapas de
-            formación de nuestros estudiantes.
-          </p>
-        </div>
-
-        <div class="row justify-content-center">
-          <div class="col-lg-10 animacion-entrada fade-in retraso-2">
-
-            <div class="accordion" id="acordeonNiveles">
-
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#nivelPreescolar" aria-expanded="true" aria-controls="nivelPreescolar">
-                    <span class="fs-4 me-3">🎨</span> Preescolar
-                    <span class="badge ms-auto me-3 d-none d-sm-inline" style="background:var(--color-secundario);color:var(--color-texto);">Edades 3-6</span>
-                  </button>
-                </h2>
-                <div id="nivelPreescolar" class="accordion-collapse collapse show" data-bs-parent="#acordeonNiveles">
-                  <div class="accordion-body">
-                    <div class="row g-4">
-                      <div class="col-md-7">
-                        <h4 class="fw-bold mb-3 texto-primario">Exploración y Desarrollo</h4>
-                        <p>
-                          Nuestro nivel de preescolar (Prejardín, Jardín y Transición) se enfoca en el desarrollo
-                          socioafectivo, psicomotriz y cognitivo a través del juego, el arte, la literatura
-                          y la exploración del medio.
-                        </p>
-                        <p>
-                          Fomentamos la autonomía, la socialización y los primeros acercamientos a la lectura,
-                          escritura y el pensamiento lógico-matemático en un ambiente cálido y seguro.
-                        </p>
-                      </div>
-                      <div class="col-md-5">
-                        <div class="p-3 rounded-3 caja-asignaturas">
-                          <h5 class="fw-bold fs-6 mb-3">Dimensiones del Desarrollo:</h5>
-                          <ul class="lista-asignaturas d-block">
-                            <li>Dimensión Socio-afectiva</li>
-                            <li>Dimensión Corporal</li>
-                            <li>Dimensión Cognitiva</li>
-                            <li>Dimensión Comunicativa</li>
-                            <li>Dimensión Estética</li>
-                            <li>Dimensión Espiritual</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#nivelPrimaria" aria-expanded="false" aria-controls="nivelPrimaria">
-                    <span class="fs-4 me-3">📚</span> Básica Primaria
-                    <span class="badge ms-auto me-3 d-none d-sm-inline" style="background:var(--color-secundario);color:var(--color-texto);">Grados 1° a 5°</span>
-                  </button>
-                </h2>
-                <div id="nivelPrimaria" class="accordion-collapse collapse" data-bs-parent="#acordeonNiveles">
-                  <div class="accordion-body">
-                    <div class="row g-4">
-                      <div class="col-md-7">
-                        <h4 class="fw-bold mb-3 texto-primario">Fundamentos para la vida</h4>
-                        <p>
-                          Abarca los grados de primero a quinto. Aquí cimentamos las bases de la lectura
-                          comprensiva, la escritura creativa y el pensamiento matemático para la resolución
-                          de problemas.
-                        </p>
-                        <p>
-                          Iniciamos la formación en el método científico a través de la experimentación
-                          sencilla, y promovemos valores de convivencia ciudadana y cuidado ambiental
-                          haciendo énfasis en nuestro contexto amazónico.
-                        </p>
-                      </div>
-                      <div class="col-md-5">
-                        <div class="p-3 rounded-3 caja-asignaturas">
-                          <h5 class="fw-bold fs-6 mb-3">Áreas Fundamentales:</h5>
-                          <ul class="lista-asignaturas d-block">
-                            <li>Matemáticas</li>
-                            <li>Lenguaje</li>
-                            <li>Ciencias Naturales</li>
-                            <li>Ciencias Sociales</li>
-                            <li>Inglés Básico</li>
-                            <li>Educación Artística</li>
-                            <li>Educación Física</li>
-                            <li>Religión y Ética</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#nivelSecundaria" aria-expanded="false" aria-controls="nivelSecundaria">
-                    <span class="fs-4 me-3">🔬</span> Básica Secundaria
-                    <span class="badge ms-auto me-3 d-none d-sm-inline" style="background:var(--color-secundario);color:var(--color-texto);">Grados 6° a 9°</span>
-                  </button>
-                </h2>
-                <div id="nivelSecundaria" class="accordion-collapse collapse" data-bs-parent="#acordeonNiveles">
-                  <div class="accordion-body">
-                    <div class="row g-4">
-                      <div class="col-md-7">
-                        <h4 class="fw-bold mb-3 texto-primario">Pensamiento Crítico y Científico</h4>
-                        <p>
-                          Comprende de grado sexto a noveno. Se profundiza en el conocimiento científico,
-                          tecnológico, humanístico y artístico. El estudiante asume un rol más activo en
-                          la investigación.
-                        </p>
-                        <p>
-                          Fortalecemos el proyecto de vida del adolescente, el liderazgo constructivo,
-                          la participación democrática y el pensamiento reflexivo frente a las dinámicas
-                          sociales locales y globales.
-                        </p>
-                      </div>
-                      <div class="col-md-5">
-                        <div class="p-3 rounded-3 caja-asignaturas">
-                          <h5 class="fw-bold fs-6 mb-3">Asignaturas Destacadas:</h5>
-                          <ul class="lista-asignaturas d-block">
-                            <li>Biología y Química intro.</li>
-                            <li>Física introductoria</li>
-                            <li>Historia y Geografía</li>
-                            <li>Tecnología e Informática</li>
-                            <li>Inglés Intermedio</li>
-                            <li>Cátedra de Paz</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#nivelMedia" aria-expanded="false" aria-controls="nivelMedia">
-                    <span class="fs-4 me-3">🎓</span> Educación Media Académica
-                    <span class="badge ms-auto me-3 d-none d-sm-inline" style="background:var(--color-secundario);color:var(--color-texto);">Grados 10° y 11°</span>
-                  </button>
-                </h2>
-                <div id="nivelMedia" class="accordion-collapse collapse" data-bs-parent="#acordeonNiveles">
-                  <div class="accordion-body">
-                    <div class="row g-4">
-                      <div class="col-md-7">
-                        <h4 class="fw-bold mb-3 texto-primario">Preparación para el Futuro</h4>
-                        <p>
-                          Los grados décimo y once conforman nuestro bachillerato académico. El objetivo principal
-                          es preparar al estudiante para su ingreso exitoso a la educación superior y su
-                          desempeño en la sociedad como ciudadano íntegro.
-                        </p>
-                        <p>
-                          Se exige rigor analítico, lectura crítica y desarrollo de proyectos de investigación
-                          (trabajo de grado). Además, se brinda orientación vocacional y pre-Saber 11
-                          intensivo.
-                        </p>
-                      </div>
-                      <div class="col-md-5">
-                        <div class="p-3 rounded-3 caja-asignaturas">
-                          <h5 class="fw-bold fs-6 mb-3">Énfasis y Profundización:</h5>
-                          <ul class="lista-asignaturas d-block">
-                            <li>Física y Química pura</li>
-                            <li>Cálculo y Trigonometría</li>
-                            <li>Filosofía</li>
-                            <li>Lectura Crítica</li>
-                            <li>Ciencias Económicas y Políticas</li>
-                            <li>Proyecto de Investigación</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <section id="programas">
-      <div class="container">
-        <div class="bloque-centrado mb-5 animacion-entrada slide-up">
-          <h2 class="titulo-seccion">Programas Complementarios</h2>
-          <div class="linea-dorada centrada mb-3"></div>
-          <p class="subtitulo-seccion">
-            La educación integral va más allá del aula regular.
-          </p>
-        </div>
-
-        <div class="row g-4">
-
-          <div class="col-md-4 animacion-entrada scale-in retraso-1">
-            <div class="tarjeta-programa text-center">
-              <div class="icono-circulo mx-auto mb-4" style="width:70px;height:70px;font-size:2rem;">🎭</div>
-              <h3 class="h5 fw-bold mb-3 texto-primario">Escuelas de Formación</h3>
-              <p class="text-muted small">
-                En jornada contraria, los estudiantes pueden participar en danzas
-                folclóricas del Putumayo, teatro, música (banda marcial) y artes plásticas.
-              </p>
-            </div>
-          </div>
-
-          <div class="col-md-4 animacion-entrada scale-in retraso-2">
-            <div class="tarjeta-programa text-center">
-              <div class="icono-circulo mx-auto mb-4" style="width:70px;height:70px;font-size:2rem;">⚽</div>
-              <h3 class="h5 fw-bold mb-3 texto-primario">Clubes Deportivos</h3>
-              <p class="text-muted small">
-                Entrenamiento especializado en fútbol de salón, baloncesto y voleibol.
-                Participación constante en los juegos intercolegiados Supérate.
-              </p>
-            </div>
-          </div>
-
-          <div class="col-md-4 animacion-entrada scale-in retraso-3">
-            <div class="tarjeta-programa text-center">
-              <div class="icono-circulo mx-auto mb-4" style="width:70px;height:70px;font-size:2rem;">🌱</div>
-              <h3 class="h5 fw-bold mb-3 texto-primario">Proyecto PRAE</h3>
-              <p class="text-muted small">
-                Proyecto Ambiental Escolar. Cultivamos huertas escolares, reciclaje
-                y concientización sobre la protección de la biodiversidad amazónica.
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="seccion-alternada py-5">
-      <div class="container text-center animacion-entrada slide-up">
-        <h2 class="fw-bold mb-3 texto-primario" style="font-family:var(--fuente-titulo);">
-          ¿Listo para ser parte de nuestra institución?
-        </h2>
-        <p class="text-muted mb-4">El proceso de pre-inscripción está abierto todo el año.</p>
-        <a href="contacto.html" class="btn-institucional hover-brillo mx-auto">
-          Conocer requisitos de matrícula
-          <i class="bi bi-arrow-right ms-2"></i>
-        </a>
-      </div>
-    </section>
-
-  </main>
-
-
-  <footer role="contentinfo">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-4 col-md-6">
-          <h2 class="footer-titulo"><i class="bi bi-mortarboard-fill me-2"></i>I.E. Santa María Goretti</h2>
-          <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.7;">
-            Formando líderes con valores desde hace más de 30 años en el corazón del departamento del Putumayo, Colombia.
-          </p>
-          <div class="d-flex gap-3 mt-3">
-            <a href="#" class="footer-link"><i class="bi bi-facebook fs-5"></i></a>
-            <a href="#" class="footer-link"><i class="bi bi-instagram fs-5"></i></a>
-            <a href="#" class="footer-link"><i class="bi bi-youtube fs-5"></i></a>
-            <a href="#" class="footer-link"><i class="bi bi-whatsapp fs-5"></i></a>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-6">
-          <h3 class="footer-titulo" style="font-size:1rem;">Links Rápidos</h3>
-          <nav aria-label="Links rápidos">
-            <a href="index.html" class="footer-link"><i class="bi bi-chevron-right me-1 small"></i>Inicio</a>
-            <a href="nosotros.html" class="footer-link"><i class="bi bi-chevron-right me-1 small"></i>Nosotros</a>
-            <a href="oferta.html" class="footer-link"><i class="bi bi-chevron-right me-1 small"></i>Oferta Educativa</a>
-            <a href="galeria.html" class="footer-link"><i class="bi bi-chevron-right me-1 small"></i>Galería</a>
-            <a href="contacto.html" class="footer-link"><i class="bi bi-chevron-right me-1 small"></i>Contacto</a>
+    <main>
+      <section
+        class="hero-interior"
+        aria-label="Encabezado de la página Oferta Educativa"
+      >
+        <div class="container text-center">
+          <nav aria-label="Ruta de navegación" class="mb-3">
+            <ol
+              class="breadcrumb justify-content-center"
+              style="background: transparent"
+            >
+              <li class="breadcrumb-item">
+                <a href="index.html" style="color: rgba(255, 255, 255, 0.7)"
+                  >Inicio</a
+                >
+              </li>
+              <li
+                class="breadcrumb-item active"
+                style="color: var(--color-secundario)"
+              >
+                Oferta Educativa
+              </li>
+            </ol>
           </nav>
+          <h1
+            class="hero-titulo-animado"
+            style="font-size: clamp(2rem, 4vw, 3rem)"
+          >
+            Nuestra Oferta Educativa
+          </h1>
+          <div class="linea-dorada centrada linea-dorada-animada my-3"></div>
+          <p
+            class="hero-subtitulo-animado lead mx-auto"
+            style="max-width: 700px; opacity: 0.9"
+          >
+            Acompañamos a nuestros estudiantes desde sus primeros pasos
+            escolares hasta su preparación para la educación superior y la vida
+            laboral.
+          </p>
         </div>
-        <div class="col-lg-3 col-md-6">
-          <h3 class="footer-titulo" style="font-size:1rem;">Información de Contacto</h3>
-          <address style="font-style:normal;">
-            <div class="footer-info"><i class="bi bi-geo-alt-fill"></i><span>Calle 5 # 8-42, Barrio Centro<br>Mocoa, Putumayo, Colombia</span></div>
-            <div class="footer-info"><i class="bi bi-telephone-fill"></i><span>(8) 4204567 — Ext. 101</span></div>
-            <div class="footer-info"><i class="bi bi-whatsapp"></i><span>+57 312 456 7890</span></div>
-            <div class="footer-info"><i class="bi bi-envelope-fill"></i><a href="mailto:info@goretti.edu.co" class="footer-link d-inline" style="color:rgba(255,255,255,0.75);">info@goretti.edu.co</a></div>
-          </address>
+      </section>
+
+      <section id="modelo-pedagogico">
+        <div class="container">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-6 animacion-entrada slide-in-izquierda">
+              <h2 class="titulo-seccion text-start mb-3">
+                Modelo Pedagógico Integral
+              </h2>
+              <div class="linea-dorada mb-4"></div>
+              <p style="line-height: 1.8">
+                En la I.E. Santa María Goretti implementamos un modelo
+                pedagógico
+                <strong>constructivista con enfoque social y humanista</strong>.
+                Creemos que el estudiante es el protagonista activo de su propio
+                aprendizaje.
+              </p>
+              <p class="text-muted" style="line-height: 1.8">
+                Nuestros currículos están diseñados no solo para transmitir
+                conocimientos científicos y tecnológicos, sino para desarrollar
+                el pensamiento crítico, la creatividad y, sobre todo, valores
+                éticos y espirituales que fortalezcan el tejido social del
+                Putumayo.
+              </p>
+              <ul class="mt-4 text-muted" style="line-height: 2">
+                <li>
+                  <i
+                    class="bi bi-check-circle-fill me-2"
+                    style="color: var(--color-secundario)"
+                  ></i>
+                  Aprendizaje basado en proyectos (ABP)
+                </li>
+                <li>
+                  <i
+                    class="bi bi-check-circle-fill me-2"
+                    style="color: var(--color-secundario)"
+                  ></i>
+                  Articulación con el entorno amazónico
+                </li>
+                <li>
+                  <i
+                    class="bi bi-check-circle-fill me-2"
+                    style="color: var(--color-secundario)"
+                  ></i>
+                  Evaluación formativa y continua
+                </li>
+                <li>
+                  <i
+                    class="bi bi-check-circle-fill me-2"
+                    style="color: var(--color-secundario)"
+                  ></i>
+                  Inclusión educativa
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-6 animacion-entrada slide-in-derecha retraso-2">
+              <div class="position-relative p-3">
+                <div
+                  style="
+                    background: var(--color-primario);
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 20px;
+                    left: -20px;
+                    border-radius: var(--radio-lg);
+                    z-index: -1;
+                  "
+                ></div>
+                <img
+                  src="https://diario.uach.cl/wp-content/uploads/2019/09/laboratorio-quimica-uach.jpeg"
+                  alt="Estudiantes en el laboratorio"
+                  class="img-fluid rounded-4 shadow-lg"
+                  style="
+                    width: 100%;
+                    aspect-ratio: 4/3;
+                    object-fit: cover;
+                    background-color: #ddd;
+                  "
+                />
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-lg-3 col-md-6">
-          <h3 class="footer-titulo" style="font-size:1rem;">Horario de Atención</h3>
-          <table style="color:rgba(255,255,255,0.75);font-size:0.85rem;width:100%;">
-            <tr><td style="padding:4px 0;font-weight:600;">Lunes – Viernes</td><td style="text-align:right;">7:00am – 5:00pm</td></tr>
-            <tr><td style="padding:4px 0;font-weight:600;">Jornada mañana</td><td style="text-align:right;">7:00am – 12:30pm</td></tr>
-            <tr><td style="padding:4px 0;font-weight:600;">Jornada tarde</td><td style="text-align:right;">12:30pm – 5:00pm</td></tr>
-            <tr><td style="padding:4px 0;font-weight:600;">Sábados</td><td style="text-align:right;">8:00am – 12:00pm</td></tr>
-          </table>
+      </section>
+
+      <section class="seccion-alternada" id="niveles">
+        <div class="container">
+          <div class="bloque-centrado mb-5 animacion-entrada slide-up">
+            <h2 class="titulo-seccion">Niveles Educativos</h2>
+            <div class="linea-dorada centrada mb-3"></div>
+            <p class="subtitulo-seccion">
+              Conoce en detalle qué ofrecemos en cada una de las etapas de
+              formación de nuestros estudiantes.
+            </p>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-lg-10 animacion-entrada fade-in retraso-2">
+              <div class="accordion" id="acordeonNiveles">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#nivelPreescolar"
+                      aria-expanded="true"
+                      aria-controls="nivelPreescolar"
+                    >
+                      <span class="fs-4 me-3">🎨</span> Preescolar
+                      <span
+                        class="badge ms-auto me-3 d-none d-sm-inline"
+                        style="
+                          background: var(--color-secundario);
+                          color: var(--color-texto);
+                        "
+                        >Edades 3-6</span
+                      >
+                    </button>
+                  </h2>
+                  <div
+                    id="nivelPreescolar"
+                    class="accordion-collapse collapse show"
+                    data-bs-parent="#acordeonNiveles"
+                  >
+                    <div class="accordion-body">
+                      <div class="row g-4">
+                        <div class="col-md-7">
+                          <h4 class="fw-bold mb-3 texto-primario">
+                            Exploración y Desarrollo
+                          </h4>
+                          <p>
+                            Nuestro nivel de preescolar (Prejardín, Jardín y
+                            Transición) se enfoca en el desarrollo
+                            socioafectivo, psicomotriz y cognitivo a través del
+                            juego, el arte, la literatura y la exploración del
+                            medio.
+                          </p>
+                          <p>
+                            Fomentamos la autonomía, la socialización y los
+                            primeros acercamientos a la lectura, escritura y el
+                            pensamiento lógico-matemático en un ambiente cálido
+                            y seguro.
+                          </p>
+                        </div>
+                        <div class="col-md-5">
+                          <div class="p-3 rounded-3 caja-asignaturas">
+                            <h5 class="fw-bold fs-6 mb-3">
+                              Dimensiones del Desarrollo:
+                            </h5>
+                            <ul class="lista-asignaturas d-block">
+                              <li>Dimensión Socio-afectiva</li>
+                              <li>Dimensión Corporal</li>
+                              <li>Dimensión Cognitiva</li>
+                              <li>Dimensión Comunicativa</li>
+                              <li>Dimensión Estética</li>
+                              <li>Dimensión Espiritual</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#nivelPrimaria"
+                      aria-expanded="false"
+                      aria-controls="nivelPrimaria"
+                    >
+                      <span class="fs-4 me-3">📚</span> Básica Primaria
+                      <span
+                        class="badge ms-auto me-3 d-none d-sm-inline"
+                        style="
+                          background: var(--color-secundario);
+                          color: var(--color-texto);
+                        "
+                        >Grados 1° a 5°</span
+                      >
+                    </button>
+                  </h2>
+                  <div
+                    id="nivelPrimaria"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#acordeonNiveles"
+                  >
+                    <div class="accordion-body">
+                      <div class="row g-4">
+                        <div class="col-md-7">
+                          <h4 class="fw-bold mb-3 texto-primario">
+                            Fundamentos para la vida
+                          </h4>
+                          <p>
+                            Abarca los grados de primero a quinto. Aquí
+                            cimentamos las bases de la lectura comprensiva, la
+                            escritura creativa y el pensamiento matemático para
+                            la resolución de problemas.
+                          </p>
+                          <p>
+                            Iniciamos la formación en el método científico a
+                            través de la experimentación sencilla, y promovemos
+                            valores de convivencia ciudadana y cuidado ambiental
+                            haciendo énfasis en nuestro contexto amazónico.
+                          </p>
+                        </div>
+                        <div class="col-md-5">
+                          <div class="p-3 rounded-3 caja-asignaturas">
+                            <h5 class="fw-bold fs-6 mb-3">
+                              Áreas Fundamentales:
+                            </h5>
+                            <ul class="lista-asignaturas d-block">
+                              <li>Matemáticas</li>
+                              <li>Lenguaje</li>
+                              <li>Ciencias Naturales</li>
+                              <li>Ciencias Sociales</li>
+                              <li>Inglés Básico</li>
+                              <li>Educación Artística</li>
+                              <li>Educación Física</li>
+                              <li>Religión y Ética</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#nivelSecundaria"
+                      aria-expanded="false"
+                      aria-controls="nivelSecundaria"
+                    >
+                      <span class="fs-4 me-3">🔬</span> Básica Secundaria
+                      <span
+                        class="badge ms-auto me-3 d-none d-sm-inline"
+                        style="
+                          background: var(--color-secundario);
+                          color: var(--color-texto);
+                        "
+                        >Grados 6° a 9°</span
+                      >
+                    </button>
+                  </h2>
+                  <div
+                    id="nivelSecundaria"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#acordeonNiveles"
+                  >
+                    <div class="accordion-body">
+                      <div class="row g-4">
+                        <div class="col-md-7">
+                          <h4 class="fw-bold mb-3 texto-primario">
+                            Pensamiento Crítico y Científico
+                          </h4>
+                          <p>
+                            Comprende de grado sexto a noveno. Se profundiza en
+                            el conocimiento científico, tecnológico, humanístico
+                            y artístico. El estudiante asume un rol más activo
+                            en la investigación.
+                          </p>
+                          <p>
+                            Fortalecemos el proyecto de vida del adolescente, el
+                            liderazgo constructivo, la participación democrática
+                            y el pensamiento reflexivo frente a las dinámicas
+                            sociales locales y globales.
+                          </p>
+                        </div>
+                        <div class="col-md-5">
+                          <div class="p-3 rounded-3 caja-asignaturas">
+                            <h5 class="fw-bold fs-6 mb-3">
+                              Asignaturas Destacadas:
+                            </h5>
+                            <ul class="lista-asignaturas d-block">
+                              <li>Biología y Química intro.</li>
+                              <li>Física introductoria</li>
+                              <li>Historia y Geografía</li>
+                              <li>Tecnología e Informática</li>
+                              <li>Inglés Intermedio</li>
+                              <li>Cátedra de Paz</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#nivelMedia"
+                      aria-expanded="false"
+                      aria-controls="nivelMedia"
+                    >
+                      <span class="fs-4 me-3">🎓</span> Educación Media
+                      Académica
+                      <span
+                        class="badge ms-auto me-3 d-none d-sm-inline"
+                        style="
+                          background: var(--color-secundario);
+                          color: var(--color-texto);
+                        "
+                        >Grados 10° y 11°</span
+                      >
+                    </button>
+                  </h2>
+                  <div
+                    id="nivelMedia"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#acordeonNiveles"
+                  >
+                    <div class="accordion-body">
+                      <div class="row g-4">
+                        <div class="col-md-7">
+                          <h4 class="fw-bold mb-3 texto-primario">
+                            Preparación para el Futuro
+                          </h4>
+                          <p>
+                            Los grados décimo y once conforman nuestro
+                            bachillerato académico. El objetivo principal es
+                            preparar al estudiante para su ingreso exitoso a la
+                            educación superior y su desempeño en la sociedad
+                            como ciudadano íntegro.
+                          </p>
+                          <p>
+                            Se exige rigor analítico, lectura crítica y
+                            desarrollo de proyectos de investigación (trabajo de
+                            grado). Además, se brinda orientación vocacional y
+                            pre-Saber 11 intensivo.
+                          </p>
+                        </div>
+                        <div class="col-md-5">
+                          <div class="p-3 rounded-3 caja-asignaturas">
+                            <h5 class="fw-bold fs-6 mb-3">
+                              Énfasis y Profundización:
+                            </h5>
+                            <ul class="lista-asignaturas d-block">
+                              <li>Física y Química pura</li>
+                              <li>Cálculo y Trigonometría</li>
+                              <li>Filosofía</li>
+                              <li>Lectura Crítica</li>
+                              <li>Ciencias Económicas y Políticas</li>
+                              <li>Proyecto de Investigación</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
+
+      <section id="programas">
+        <div class="container">
+          <div class="bloque-centrado mb-5 animacion-entrada slide-up">
+            <h2 class="titulo-seccion">Programas Complementarios</h2>
+            <div class="linea-dorada centrada mb-3"></div>
+            <p class="subtitulo-seccion">
+              La educación integral va más allá del aula regular.
+            </p>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-md-4 animacion-entrada scale-in retraso-1">
+              <div class="tarjeta-programa text-center">
+                <div
+                  class="icono-circulo mx-auto mb-4"
+                  style="width: 70px; height: 70px; font-size: 2rem"
+                >
+                  🎭
+                </div>
+                <h3 class="h5 fw-bold mb-3 texto-primario">
+                  Escuelas de Formación
+                </h3>
+                <p class="text-muted small">
+                  En jornada contraria, los estudiantes pueden participar en
+                  danzas folclóricas del Putumayo, teatro, música (banda
+                  marcial) y artes plásticas.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-4 animacion-entrada scale-in retraso-2">
+              <div class="tarjeta-programa text-center">
+                <div
+                  class="icono-circulo mx-auto mb-4"
+                  style="width: 70px; height: 70px; font-size: 2rem"
+                >
+                  ⚽
+                </div>
+                <h3 class="h5 fw-bold mb-3 texto-primario">
+                  Clubes Deportivos
+                </h3>
+                <p class="text-muted small">
+                  Entrenamiento especializado en fútbol de salón, baloncesto y
+                  voleibol. Participación constante en los juegos
+                  intercolegiados Supérate.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-4 animacion-entrada scale-in retraso-3">
+              <div class="tarjeta-programa text-center">
+                <div
+                  class="icono-circulo mx-auto mb-4"
+                  style="width: 70px; height: 70px; font-size: 2rem"
+                >
+                  🌱
+                </div>
+                <h3 class="h5 fw-bold mb-3 texto-primario">Proyecto PRAE</h3>
+                <p class="text-muted small">
+                  Proyecto Ambiental Escolar. Cultivamos huertas escolares,
+                  reciclaje y concientización sobre la protección de la
+                  biodiversidad amazónica.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion-alternada py-5">
+        <div class="container text-center animacion-entrada slide-up">
+          <h2
+            class="fw-bold mb-3 texto-primario"
+            style="font-family: var(--fuente-titulo)"
+          >
+            ¿Listo para ser parte de nuestra institución?
+          </h2>
+          <p class="text-muted mb-4">
+            El proceso de pre-inscripción está abierto todo el año.
+          </p>
+          <a
+            href="contacto.html"
+            class="btn-institucional hover-brillo mx-auto"
+          >
+            Conocer requisitos de matrícula
+            <i class="bi bi-arrow-right ms-2"></i>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer role="contentinfo">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4 col-md-6">
+            <h2 class="footer-titulo">
+              <i class="bi bi-mortarboard-fill me-2"></i>I.E. Santa María
+              Goretti
+            </h2>
+            <p
+              style="
+                color: rgba(255, 255, 255, 0.75);
+                font-size: 0.9rem;
+                line-height: 1.7;
+              "
+            >
+              Formando líderes con valores desde hace más de 30 años en el
+              corazón del departamento del Putumayo, Colombia.
+            </p>
+            <div class="d-flex gap-3 mt-3">
+              <a href="#" class="footer-link"
+                ><i class="bi bi-facebook fs-5"></i
+              ></a>
+              <a href="#" class="footer-link"
+                ><i class="bi bi-instagram fs-5"></i
+              ></a>
+              <a href="#" class="footer-link"
+                ><i class="bi bi-youtube fs-5"></i
+              ></a>
+              <a href="#" class="footer-link"
+                ><i class="bi bi-whatsapp fs-5"></i
+              ></a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6">
+            <h3 class="footer-titulo" style="font-size: 1rem">Links Rápidos</h3>
+            <nav aria-label="Links rápidos">
+              <a href="index.html" class="footer-link"
+                ><i class="bi bi-chevron-right me-1 small"></i>Inicio</a
+              >
+              <a href="nosotros.html" class="footer-link"
+                ><i class="bi bi-chevron-right me-1 small"></i>Nosotros</a
+              >
+              <a href="oferta.html" class="footer-link"
+                ><i class="bi bi-chevron-right me-1 small"></i>Oferta
+                Educativa</a
+              >
+              <a href="galeria.html" class="footer-link"
+                ><i class="bi bi-chevron-right me-1 small"></i>Galería</a
+              >
+              <a href="contacto.html" class="footer-link"
+                ><i class="bi bi-chevron-right me-1 small"></i>Contacto</a
+              >
+            </nav>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h3 class="footer-titulo" style="font-size: 1rem">
+              Información de Contacto
+            </h3>
+            <address style="font-style: normal">
+              <div class="footer-info">
+                <i class="bi bi-geo-alt-fill"></i
+                ><span
+                  >Calle 5 # 8-42, Barrio Centro<br />Mocoa, Putumayo,
+                  Colombia</span
+                >
+              </div>
+              <div class="footer-info">
+                <i class="bi bi-telephone-fill"></i
+                ><span>(8) 4204567 — Ext. 101</span>
+              </div>
+              <div class="footer-info">
+                <i class="bi bi-whatsapp"></i><span>+57 312 456 7890</span>
+              </div>
+              <div class="footer-info">
+                <i class="bi bi-envelope-fill"></i
+                ><a
+                  href="mailto:info@goretti.edu.co"
+                  class="footer-link d-inline"
+                  style="color: rgba(255, 255, 255, 0.75)"
+                  >info@goretti.edu.co</a
+                >
+              </div>
+            </address>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h3 class="footer-titulo" style="font-size: 1rem">
+              Horario de Atención
+            </h3>
+            <table
+              style="
+                color: rgba(255, 255, 255, 0.75);
+                font-size: 0.85rem;
+                width: 100%;
+              "
+            >
+              <tr>
+                <td style="padding: 4px 0; font-weight: 600">
+                  Lunes – Viernes
+                </td>
+                <td style="text-align: right">7:00am – 5:00pm</td>
+              </tr>
+              <tr>
+                <td style="padding: 4px 0; font-weight: 600">Jornada mañana</td>
+                <td style="text-align: right">7:00am – 12:30pm</td>
+              </tr>
+              <tr>
+                <td style="padding: 4px 0; font-weight: 600">Jornada tarde</td>
+                <td style="text-align: right">12:30pm – 5:00pm</td>
+              </tr>
+              <tr>
+                <td style="padding: 4px 0; font-weight: 600">Sábados</td>
+                <td style="text-align: right">8:00am – 12:00pm</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <hr class="footer-divider" />
+        <p class="footer-creditos">
+          © <span id="anoActual">2025</span> I.E. Santa María Goretti — Mocoa,
+          Putumayo, Colombia. Todos los derechos reservados.
+          <span class="mx-2">|</span> Diseñado con
+          <i
+            class="bi bi-heart-fill"
+            style="color: var(--color-secundario)"
+          ></i>
+          para la comunidad educativa.
+        </p>
       </div>
-      <hr class="footer-divider">
-      <p class="footer-creditos">
-        © <span id="anoActual">2025</span> I.E. Santa María Goretti — Mocoa, Putumayo, Colombia. Todos los derechos reservados.
-        <span class="mx-2">|</span> Diseñado con <i class="bi bi-heart-fill" style="color:var(--color-secundario);"></i> para la comunidad educativa.
-      </p>
-    </div>
-  </footer>
+    </footer>
 
-  <button id="botonArriba" aria-label="Volver al inicio de la página" title="Ir arriba"><i class="bi bi-arrow-up-short fs-4"></i></button>
+    <button
+      id="botonArriba"
+      aria-label="Volver al inicio de la página"
+      title="Ir arriba"
+    >
+      <i class="bi bi-arrow-up-short fs-4"></i>
+    </button>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/tema.js"></script>
-  <script src="js/main.js"></script>
-
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/tema.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
